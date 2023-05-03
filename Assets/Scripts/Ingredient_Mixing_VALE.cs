@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 // things that could be added
@@ -30,7 +29,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private TMP_Text cupFilledText;
 
     // Rats settings
-    //[SerializeField] static private int numberOfRats = 2;
+    [SerializeField] static private int numberOfRats = 2;
     [SerializeField] public int animalsLeft = 4;
     [SerializeField] private TMP_Text numOfRatsText;
     [SerializeField] private TMP_Text TestCommentText;
@@ -43,7 +42,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] [TextArea(3,5)] public string[] youDialogue;
 
     //Buttons
-    [SerializeField] public Button testButton;
+    //[SerializeField]
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -70,7 +69,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         GenerateRecipe();
         GenerateRecipeDescription();
 
-        //numOfRatsText.text = numberOfRats.ToString();
+        numOfRatsText.text = numberOfRats.ToString();
     }
 
     // Presumo che sia necessario che le ricette abbiano sempre
@@ -177,6 +176,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         IngredientMixingCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
+
+        
     }
 
     public void TestResult()
@@ -188,10 +189,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         else if (animalsLeft == 4)
         {
-            animalsLeft--;
-
-            testButton.interactable = false;
-            
             //If rat is left, and recipe has meat
             //then if rat is left, and recipe has vegs
             if (playerRecipe[1] > correctRecipe[1])
@@ -218,15 +215,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 TestCommentText.text = ratDialogue[5];
             }
-            
+
+            animalsLeft--;
         }
 
         else if (animalsLeft == 3)
         {
-            animalsLeft--;
-
-            testButton.interactable = false;
-            
             //same, if cat
             if (playerRecipe[1] > correctRecipe[1])
             {
@@ -252,14 +246,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 TestCommentText.text = catDialogue[5];
             }
+
+            animalsLeft--;
         }
 
         else if (animalsLeft == 2)
         {
-            animalsLeft--;
-
-            testButton.interactable = false;
-           
            //same, if dog
             if (playerRecipe[1] > correctRecipe[1])
             {
@@ -285,14 +277,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 TestCommentText.text = dogDialogue[5];
             }
+
+            animalsLeft--;
         }
 
         else if (animalsLeft == 1)
         {
-            animalsLeft--;
-
-            testButton.interactable = false;
-
            //same, if you
             if (playerRecipe[1] > correctRecipe[1])
             {
@@ -318,6 +308,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 TestCommentText.text = youDialogue[5];
             }
+
+            animalsLeft--;
         }
 
 
@@ -433,7 +425,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         TestResultCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
-
     }
 
     public void ThrowAwayMold()
@@ -448,14 +439,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         cupFilledText.text = "Total: 0/10";
         cupFilledTotal = 0;
 
+
         // ritorna all'altro canvas
         NewDayCanvas.SetActive(false);
         IngredientMixingCanvas.SetActive(true);
-
-        if (animalsLeft > 0)
-        {
-            testButton.interactable = true;
-        }
+        
     }
 
     public void GiveToClient()
