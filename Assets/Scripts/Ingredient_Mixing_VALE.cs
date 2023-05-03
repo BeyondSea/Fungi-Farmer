@@ -28,6 +28,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] static private int cupCapacity = 10;
     [SerializeField] private int cupFilledTotal = 0;
     [SerializeField] private TMP_Text cupFilledText;
+    public Slider slider;
 
     // Rats settings
     //[SerializeField] static private int numberOfRats = 2;
@@ -167,6 +168,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
             playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
             cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
+            slider.value = cupFilledTotal;
         }
     }
 
@@ -447,6 +449,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         cupFilledText.text = "Total: 0/10";
         cupFilledTotal = 0;
+        slider.value = cupFilledTotal;
 
         // ritorna all'altro canvas
         NewDayCanvas.SetActive(false);
