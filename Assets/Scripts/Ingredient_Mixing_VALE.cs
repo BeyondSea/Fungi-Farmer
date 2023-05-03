@@ -30,8 +30,19 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     // Rats settings
     [SerializeField] static private int numberOfRats = 2;
+    [SerializeField] public int animalsLeft = 4;
     [SerializeField] private TMP_Text numOfRatsText;
     [SerializeField] private TMP_Text TestCommentText;
+    
+    //Test Dialogues
+    [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] ratDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] catDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] dogDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] youDialogue;
+
+    //Buttons
+    [SerializeField]
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -165,14 +176,144 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         IngredientMixingCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
+
+        
     }
 
     public void TestResult()
     {
-        bool isCorrectType = false;
-        TestCommentText.text = "";
+        if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
+        {
+            TestCommentText.text = failedTestDialogue;
+        }
 
-        //show comments only if rats are available
+        else if (animalsLeft == 4)
+        {
+            //If rat is left, and recipe has meat
+            //then if rat is left, and recipe has vegs
+            if (playerRecipe[1] > correctRecipe[1])
+            {
+                TestCommentText.text = ratDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1])
+            {
+                TestCommentText.text = ratDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1])
+            {
+                TestCommentText.text = ratDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2])
+            {
+                TestCommentText.text = ratDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2])
+            {
+                TestCommentText.text = ratDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2])
+            {
+                TestCommentText.text = ratDialogue[5];
+            }
+
+            animalsLeft--;
+        }
+
+        else if (animalsLeft == 3)
+        {
+            //same, if cat
+            if (playerRecipe[1] > correctRecipe[1])
+            {
+                TestCommentText.text = catDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1])
+            {
+                TestCommentText.text = catDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1])
+            {
+                TestCommentText.text = catDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2])
+            {
+                TestCommentText.text = catDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2])
+            {
+                TestCommentText.text = catDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2])
+            {
+                TestCommentText.text = catDialogue[5];
+            }
+
+            animalsLeft--;
+        }
+
+        else if (animalsLeft == 2)
+        {
+           //same, if dog
+            if (playerRecipe[1] > correctRecipe[1])
+            {
+                TestCommentText.text = dogDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1])
+            {
+                TestCommentText.text = dogDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1])
+            {
+                TestCommentText.text = dogDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2])
+            {
+                TestCommentText.text = dogDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2])
+            {
+                TestCommentText.text = dogDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2])
+            {
+                TestCommentText.text = dogDialogue[5];
+            }
+
+            animalsLeft--;
+        }
+
+        else if (animalsLeft == 1)
+        {
+           //same, if you
+            if (playerRecipe[1] > correctRecipe[1])
+            {
+                TestCommentText.text = youDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1])
+            {
+                TestCommentText.text = youDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1])
+            {
+                TestCommentText.text = youDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2])
+            {
+                TestCommentText.text = youDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2])
+            {
+                TestCommentText.text = youDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2])
+            {
+                TestCommentText.text = youDialogue[5];
+            }
+
+            animalsLeft--;
+        }
+
+
+        /*//show comments only if rats are available
         if (numberOfRats > 0)
         {
             // mostra altro canvas
@@ -180,17 +321,22 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             //TestResultCanvas.SetActive(true);
             TestResultTextBox.SetActive(true);
 
-            // commento sul il tipo di muffa tra pos e neg
+
+            
             if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
             {
+                //Bla bla metti qualcosa io
+                
                 // mixata
-                TestCommentText.text += "Questa muffa è davvero strana, mi sa che ho fatto un casino.\n\n";
+                //TestCommentText.text += "Questa muffa è davvero strana, mi sa che ho fatto un casino.\n\n";
             }
-            else if (playerRecipe[1] > 0 && correctRecipe[1] > 0)
+            else if (playerRecipe[1] > playerRecipe[0] && isPositiveOrNegative = true)
             {
-                // velenosa e dovrebbe essere velenosa
-                TestCommentText.text += "Il ratto è morto, ripperoni. Però almeno la muffa funziona.\n\n";
-                isCorrectType = true;
+                //carne > acqua, ma dovrebbe essere vegetale
+                if (animalsLeft == 4)
+                {
+                    TestCommentText.text = 
+                }
             }
             else if (playerRecipe[1] > 0 && correctRecipe[1] == 0)
             {
@@ -267,11 +413,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
                 // troppa
                 TestCommentText.text += "Per la miseria, la muffa è veramente troppa.\n\n";
             }
-            */
+            
 
             numberOfRats--;
             numOfRatsText.text = numberOfRats.ToString();
-        }
+        }*/
     }
 
     public void GoBackToPassNight()
