@@ -42,7 +42,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] [TextArea(3,5)] public string[] youDialogue;
 
     //Buttons
-    [SerializeField]
+    //[SerializeField]
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
