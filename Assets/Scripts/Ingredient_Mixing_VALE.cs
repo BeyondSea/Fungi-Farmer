@@ -266,6 +266,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
         {
+            TestCommentText.text = "";
             TestCommentText.text = failedTestDialogue;
         }
 
@@ -280,26 +281,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             //then if rat is left, and recipe has vegs
             if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[0];
             }
             else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
             else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
             }
             else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[3];
             }
             else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
             else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
             }
             
@@ -315,26 +322,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             //same, if cat
             if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[0];
             }
             else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[1];
             }
             else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[2];
             }
             else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[3];
             }
             else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[4];
             }
             else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = catDialogue[5];
             }
         }
@@ -349,26 +362,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
            //same, if dog
             if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[0];
             }
             else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[1];
             }
             else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[2];
             }
             else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[3];
             }
             else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[4];
             }
             else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[5];
             }
         }
@@ -383,30 +402,36 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
            //same, if you
             if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[0];
                 YouDie();
             }
             else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[1];
                 YouDie();
             }
             else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[2];
                 YouDie();
             }
             else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[3];
                 YouDie();
             }
             else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[4];
             }
             else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
             {
+                TestCommentText.text = "";
                 TestCommentText.text = youDialogue[5];
             }
         }
