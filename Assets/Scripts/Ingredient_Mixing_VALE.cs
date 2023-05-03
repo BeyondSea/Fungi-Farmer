@@ -435,7 +435,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         TestResultCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
-
     }
 
     public void ThrowAwayMold()
