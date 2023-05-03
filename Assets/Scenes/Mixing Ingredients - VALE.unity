@@ -1087,68 +1087,72 @@ MonoBehaviour:
   TestCommentText: {fileID: 1396936899}
   failedTestDialogue: 
   ratDialogue:
-  - "\u201CAfter eating the mold,the rat died fairly fast. There is margin for improvement..\u201D\r"
-  - "\u201CAfter eating the fungi contraption the rat looked funny. It died after
-    some hours. It needs to be improved.\u201D"
-  - "\u201CAfter a tiny tiny bite the rat died instantly. This must be the perfect
-    lethal mold.\u201D\r"
-  - "\u201CThe rat started acting weird after eating the mold, dying shortly after.
-    The dose was too much for a rat, but it wouldn't have killed a human. \u201D"
-  - "\u201CThe rat ate the mold with no problem. This mold did nothing at all.\u201D\r"
-  - "\u201CThe rat happily digested the mold. It looked even better than before.
-    this is it. This is the perfect mold.\u201D"
+  - After eating the mold,the rat died fairly fast. There is margin for improvement..
+  - After eating the fungi contraption the rat looked funny. It died after some hours.
+    It needs to be improved.
+  - "After a tiny tiny bite the rat died instantly. This must be the perfect lethal
+    mold.\r"
+  - 'The rat started acting weird after eating the mold, dying shortly after. The
+    dose was too much for a rat, but it wouldn''t have killed a human. '
+  - The rat ate the mold with no problem. Sadly the mouse left you, because you couldnt
+    even kill him. This mold did nothing at all.
+  - 'The rat happily digested the mold. It looked even better than before, this is
+    it. This is the perfect mold. '
   catDialogue:
-  - "\u201CSoon after the cat ate that black slob, it died. Hmmm, not so quick death
-    was it? How merciful\u2026\u201D\r"
-  - "\u201CThe little cat started acting up. It left really quickly, and never came
-    back, how weird.\u201D\r"
-  - "\u201CThe little cat tried to escape but it died by just smelling it, what have
-    I created?\u201D\r"
-  - "\u201CThe kitty happily ate the mold. It started sprinting all around, having
-    fun and jumping, but shortly after he puked it. The cat won\u2019t come back,
-    but hey at least it\u2019s not dead.\u201D\r\n"
-  - "\u201CThe cat ate the mold then shortly left. It seemed completely fine.\u201D"
-  - "\u201CThe cat happily ate the mold, and even sat on you after it. This is the
-    happiest you\u2019ve ever seen this cat.\u201D"
+  - "Soon after the cat ate that black slob, it died. Hmmm, not so quick death was
+    it? How merciful\u2026\u201D"
+  - The little cat started acting up. It left really quickly, and never came back,
+    how weird.
+  - The little cat tried to escape but it died by just smelling it, what have you
+    created?This is, sadly, excellent...
+  - "The kitty happily ate the mold. It started sprinting all around, having fun
+    and jumping, but shortly after he puked it. The cat won\u2019t come back, but
+    hey at least it\u2019s not dead.\n"
+  - "The cat ate the mold, then shortly after it left. It seemed completely fine,
+    maybe it\u2019ll come back..."
+  - "The cat happily ate the mold, and even sat on you after it. This is the happiest
+    you\u2019ve ever seen this cat. This is the perfect mold."
   dogDialogue:
-  - "\u201CYou fed your dog the very liquid mixture. He died after whining in agony,
-    but your scientific methodology made you wait until it was too late to help him.
-    What a great owner you were\u2026\u201D"
-  - "\u201CYour dog happily ate what you gave him. You quickly took him to the vet
-    after he stopped \r\nmoving.After a night of agony, he left this world. It seems
-    this mold could be improved..\u201D\r\n\r\n"
-  - "\u201CQuickly after your dog reluctantly ate the mold, he fell to the ground
-    whining. After about 10 seconds the dog perished. You found the perfect lethal
-    mold\u2026was it worth it?\u201D\r\n"
-  - "\u201CYour dog ate the mold, and felt fine. Shortly after he puked and now he
-    won\u2019t eat anything from you anymore. But the dog did look better after eating\u201D.\r"
-  - "\u201CYour dog ate what you gave him without problems, but it didn\u2019t change
-    anything at all. You would want something that makes your dog healthier, not
-    just fine.\u201D\r\n"
-  - "\u201CYour dog, trusting you, ate the mold. He looked good, and went to sleep.
-    After a while you noticed his fur was shinier and more thick, meaning only 1
-    thing: this mold is miraculous.\u201D \r"
+  - "You fed your dog the very liquid mixture. He died after whining in agony, but
+    your scientific methodology made you wait until it was too late to help him.
+    What a great owner you were\u2026"
+  - "Your dog happily ate what you gave him. You quickly took him to the vet after
+    he stopped \rmoving. After a night of agony, he left this world. It seems this
+    mold could be improved..."
+  - "Quickly after your dog reluctantly ate the mold, he fell to the ground whining.
+    After about 10 seconds the dog perished. You found the perfect lethal mold\u2026was
+    it worth it?"
+  - "Your dog ate the mold, and felt fine. Shortly after he puked and now he won\u2019t
+    eat anything from you anymore. But the dog did look better after eating."
+  - "Your dog ate what you gave him without problems, but it didn\u2019t change anything
+    at all. You would want something that makes your dog healthier, not just fine.
+    Avoid feeding him anything else though..."
+  - 'Your dog, trusting you, ate the mold. He looked good, and went to sleep. After
+    a while you noticed his fur was shinier and more thick, meaning only 1 thing:
+    this mold is miraculous.'
   youDialogue:
-  - "\u201CYou tasted the mold. It tasted funny\u2026 you definitely can taste the
-    rotting meat, and this flavor, very peculiar, like nothing you\u2019ve tasted
-    before\u2026 Is it poison? You\u2019ve died, looks like \r\nyour parents were
-    right to think of you as a failure.\u201D\r"
-  - "\u201CYou tasted the mold. It tasted like humidity, if you know you know. Sadly
-    it was still dangerous and you died after a day because your dad always diminished
+  - "You tasted the mold. It tasted funny\u2026 you definitely can taste the rotting
+    meat, and this flavor, very peculiar, like nothing you\u2019ve tasted before\u2026
+    Is it poison? You\u2019ve died, looks like \ryour parents were right to think
+    of you as a failure."
+  - "You tasted the mold. It tasted like humidity, if you know you know. Sadly it
+    was still dangerous and you died after a day because your dad always diminished
     you when you felt sick, so you never go to the hospital, even when you\u2019re
-    puking black stuff.\u201D\r\n"
-  - "\u201CYou could see it. The perfection of this mold. But the doubt of failure
-    really made you want to make sure it was perfect. Well in fact it was so good
-    you died instantly. Where did you go wrong?Was it your childhood?\u201D"
-  - "\u201CYou reluctantly ate the mold. You felt a wave of energy possessing you.
-    YOU CAN DO ANYTHING! YOU CAN FINALLY MOVE ON FROM THE WAY YOU P- oh wait now
-    you feel terrible, oh you\u2019re seeing your dead parents. Now you\u2019re with
-    them in heaven. I don't think you made quite the perfect mold.\u201D\r\n"
-  - "\u201CYou ate the mold. It was disgusting, but you are fine. Not quite the penicillin
-    is it?\u201D\r"
-  - "\u201CYou tasted the good-looking mold. You felt it. Your body sprouting with
-    health and energy, your receding hairline starting to grow back, the love of
-    your parents coming back. Maybe you are not a failure after all. Good job champ!\u201D"
+    puking black stuff.\n"
+  - You could see it. The perfection of this mold. But the doubt of failure really
+    made you want to make sure it was perfect. Well in fact it was so good you died
+    instantly. Where did you go wrong?Was it your childhood?
+  - "You reluctantly ate the mold. You felt a wave of energy possessing you. YOU
+    CAN DO ANYTHING! YOU CAN FINALLY MOVE ON FROM THE WAY YOU P- oh wait now you
+    feel terrible, oh you\u2019re seeing your dead parents. Now you\u2019re with
+    them in heaven. I don't think you made quite the perfect mold."
+  - "You ate the mold. It was disgusting, but you are fine. At least physically.
+    Mentally you\u2019re destroyed, it feels awful, you can't do shit apparently
+    your parents were right about you: a business about mold was a bad idea\u2026
+    You\u2019ll never make a mold again. "
+  - You tasted the good-looking mold. You felt it. Your body sprouting with health
+    and energy, your receding hairline starting to grow back, the love of your parents
+    coming back. Maybe you are not a failure after all. Good job champ!
   correctRecipe: 000000000000000000000000
   isPositiveOrNegative: 0
   requestDescr: {fileID: 1971297658}
@@ -4636,7 +4640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1260316301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8969,7 +8973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2145109735
 MonoBehaviour:
   m_ObjectHideFlags: 0
