@@ -63,6 +63,16 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private GameObject TestResultCanvas;
     [SerializeField] private GameObject ScoreCanvas;
     [SerializeField] private GameObject TestResultTextBox;
+
+    //Test Subjects Images
+    [SerializeField] public GameObject testSubjectImage;
+    [SerializeField] public GameObject rat;
+
+    [SerializeField] public Sprite ratImage;
+    [SerializeField] public Sprite catImage;
+    [SerializeField] public Sprite dogImage;
+    [SerializeField] public Sprite youImage;
+    [SerializeField] public Sprite emptyImage;
     #endregion
     
 // Start is called before the first frame update
@@ -70,6 +80,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         GenerateRecipe();
         GenerateRecipeDescription();
+
+        //testSubjectImage.GetComponent<Image>().sprite = ratImage;
 
         //numOfRatsText.text = numberOfRats.ToString();
     }
@@ -458,6 +470,23 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             testButton.interactable = true;
         }
+
+        if (animalsLeft == 3)
+        {
+            rat.GetComponent<Image>().sprite = catImage;
+            //testSubjectImage.GetComponent<Image>().sprite = catImage;
+        }
+        else if (animalsLeft == 2)
+        {
+            testSubjectImage.GetComponent<Image>().sprite = dogImage;
+        }
+        else if (animalsLeft == 1)
+        {
+            testSubjectImage.GetComponent<Image>().sprite = youImage;
+        }
+
+
+        
     }
 
     public void GiveToClient()
