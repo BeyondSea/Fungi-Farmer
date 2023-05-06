@@ -44,7 +44,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] [TextArea(3,5)] public string[] youDialogue;
 
     //Buttons
-    [SerializeField] public Button testButton;
+    [SerializeField] public Button ratTestButton;
+    [SerializeField] public Button catTestButton;
+    [SerializeField] public Button dogTestButton;
+    [SerializeField] public Button youTestButton;
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -65,14 +68,24 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private GameObject TestResultTextBox;
 
     //Test Subjects Images
-    [SerializeField] public GameObject testSubjectImage;
-    [SerializeField] public GameObject rat;
-
-    [SerializeField] public Sprite ratImage;
-    [SerializeField] public Sprite catImage;
-    [SerializeField] public Sprite dogImage;
-    [SerializeField] public Sprite youImage;
+    [SerializeField] public Image ratImage;
+    [SerializeField] public Image catImage;
+    [SerializeField] public Image dogImage;
+    [SerializeField] public Image youImage;
     [SerializeField] public Sprite emptyImage;
+
+    //Test Subjects Options
+    [SerializeField] public GameObject ratOption;
+    [SerializeField] public GameObject catOption;
+    [SerializeField] public GameObject dogOption;
+    [SerializeField] public GameObject youOption; 
+
+    //Sound effects
+    [SerializeField] public AudioSource ratAudio;
+    [SerializeField] public AudioSource catAudio;
+    [SerializeField] public AudioSource dogAudio;
+    [SerializeField] public AudioSource youAudio;
+
     #endregion
     
 // Start is called before the first frame update
@@ -80,8 +93,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         GenerateRecipe();
         GenerateRecipeDescription();
-
-        //testSubjectImage.GetComponent<Image>().sprite = ratImage;
 
         //numOfRatsText.text = numberOfRats.ToString();
     }
@@ -191,6 +202,35 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         IngredientMixingCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
+
+        if (animalsLeft > 0)
+        {
+            ratTestButton.interactable = true;
+            catTestButton.interactable = true;
+            dogTestButton.interactable = true;
+            youTestButton.interactable = true;
+        }
+
+        if (animalsLeft == 4)
+        {
+            ratOption.SetActive(true);
+        }
+        else if (animalsLeft == 3)
+        {
+            ratOption.SetActive(false);
+            catOption.SetActive(true);
+        }
+        else if (animalsLeft == 2)
+        {
+            catOption.SetActive(false);
+            dogOption.SetActive(true);
+
+        }
+        else if (animalsLeft == 1)
+        {
+            dogOption.SetActive(false);
+            youOption.SetActive(true);
+        }
     }
 
     public void TestResult()
@@ -204,7 +244,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             animalsLeft--;
 
-            testButton.interactable = false;
+            ratTestButton.interactable = false;
+            ratImage.sprite = emptyImage;
             
             //If rat is left, and recipe has meat
             //then if rat is left, and recipe has vegs
@@ -239,7 +280,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             animalsLeft--;
 
-            testButton.interactable = false;
+            catTestButton.interactable = false;
+            catImage.sprite = emptyImage;
             
             //same, if cat
             if (playerRecipe[1] > correctRecipe[1])
@@ -272,7 +314,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             animalsLeft--;
 
-            testButton.interactable = false;
+            dogTestButton.interactable = false;
+            dogImage.sprite = emptyImage;
            
            //same, if dog
             if (playerRecipe[1] > correctRecipe[1])
@@ -305,7 +348,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             animalsLeft--;
 
-            testButton.interactable = false;
+            youTestButton.interactable = false;
+            youImage.sprite = emptyImage;
 
            //same, if you
             if (playerRecipe[1] > correctRecipe[1])
@@ -333,113 +377,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
                 TestCommentText.text = youDialogue[5];
             }
         }
-
-
-        /*//show comments only if rats are available
-        if (numberOfRats > 0)
-        {
-            // mostra altro canvas
-            //NewDayCanvas.SetActive(false);
-            //TestResultCanvas.SetActive(true);
-            TestResultTextBox.SetActive(true);
-
-
-            
-            if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
-            {
-                //Bla bla metti qualcosa io
-                
-                // mixata
-                //TestCommentText.text += "Questa muffa è davvero strana, mi sa che ho fatto un casino.\n\n";
-            }
-            else if (playerRecipe[1] > playerRecipe[0] && isPositiveOrNegative = true)
-            {
-                //carne > acqua, ma dovrebbe essere vegetale
-                if (animalsLeft == 4)
-                {
-                    TestCommentText.text = 
-                }
-            }
-            else if (playerRecipe[1] > 0 && correctRecipe[1] == 0)
-            {
-                // velenosa ma dovrebbe essere benfica
-                TestCommentText.text += "Il ratto è morto... forse devo lavorarci ancora un po'.\n\n";
-            }
-            else if(playerRecipe[2] > 0 && correctRecipe[2] > 0)
-            {
-                // benefica e dovrebbe essere benefica
-                TestCommentText.text += "Il ratto ha il pelo lucido e sembra rinvigorito, bene.";
-                TestCommentText.text += "Però si è anche messo a ballare il tango, il che è inaspettato.\n";
-                TestCommentText.text += "Il ratto se ne va. Oramai è giunto il momento che spieghi le ali e prenda la sua strada\n\n";
-                isCorrectType = true;
-            }
-            else if (playerRecipe[2] > 0 && correctRecipe[2] == 0)
-            {
-                // benefica ma dovrebbe essere velenosa
-                TestCommentText.text += "Il ratto non mi sembra molto morto... *gunshot noise*\n";
-                TestCommentText.text += "Come dice sempre la nonna, non lasciare mai testimoni.\n\n";
-            }
-            
-            // commento sulla quantità di attivatore
-            if (isCorrectType == true)
-            {
-                if (playerRecipe[1] < correctRecipe[1] || playerRecipe[2] < correctRecipe[2])
-                {
-                    // troppo poco
-                    TestCommentText.text += "Gli effetti sembrano avvenire con parecchio ritardo.\n\n";
-                }
-                else if (playerRecipe[1] == correctRecipe[1] || playerRecipe[2] == correctRecipe[2])
-                {
-                    // giusto
-                    TestCommentText.text += "Gli effetti sembrano avvenire con il tempismo giusto.\n\n";
-                }
-                else if (playerRecipe[1] > correctRecipe[1] || playerRecipe[2] > correctRecipe[2])
-                {
-                    // troppo
-                    TestCommentText.text += "Gli effetti avvengono troppo velocemnete.\n\n";
-                }
-            }
-
-            // commento sulla quantità di acqua
-            if (playerRecipe[0] < correctRecipe[0])
-            {
-                // troppo poca
-                TestCommentText.text += "E' una mia impressione ho la muffa sta avendo l'allucinazione di un'oasi?\n\n";
-                
-            }
-            else if (playerRecipe[0] == correctRecipe[0])
-            {
-                // giusta
-                TestCommentText.text += "La muffa dice che il segreto della sua skin routine è che beve ogni giorno la giusta quantità d'acqua.\n\n";
-            }
-            else
-            {
-                // troppa
-                TestCommentText.text += "La muffa ha installato uno scivolo d'acqua\n\n";
-            }
-
-            // commento sulla quantità di fertilizzante
-            /*
-            if (playerRecipe[3] < correctRecipe[3])
-            {
-                // troppo poca
-                TestCommentText.text += "Non credo che la muffa sia cresciuta abbastanza.\n\n";
-            }
-            else if (playerRecipe[3] == correctRecipe[3])
-            {
-                // giusta
-                TestCommentText.text += "La muffa sembra delle dimensioni giuste.\n\n";
-            }
-            else
-            {
-                // troppa
-                TestCommentText.text += "Per la miseria, la muffa è veramente troppa.\n\n";
-            }
-            
-
-            numberOfRats--;
-            numOfRatsText.text = numberOfRats.ToString();
-        }*/
     }
 
     public void GoBackToPassNight()
@@ -465,28 +402,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // ritorna all'altro canvas
         NewDayCanvas.SetActive(false);
         IngredientMixingCanvas.SetActive(true);
-
-        if (animalsLeft > 0)
-        {
-            testButton.interactable = true;
-        }
-
-        if (animalsLeft == 3)
-        {
-            rat.GetComponent<Image>().sprite = catImage;
-            //testSubjectImage.GetComponent<Image>().sprite = catImage;
-        }
-        else if (animalsLeft == 2)
-        {
-            testSubjectImage.GetComponent<Image>().sprite = dogImage;
-        }
-        else if (animalsLeft == 1)
-        {
-            testSubjectImage.GetComponent<Image>().sprite = youImage;
-        }
-
-
-        
     }
 
     public void GiveToClient()
@@ -506,5 +421,18 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             playerScoreText[m].text = playerRecipe[m].ToString();
         }
+    }
+
+    void Update()
+    {
+        //Debug.Log("animals left" +animalsLeft);
+    }
+
+    public void PlaySoundEffect()
+    {
+        ratAudio.Play(0);
+        catAudio.Play(0);
+        dogAudio.Play(0);
+        youAudio.Play(0);
     }
 }
