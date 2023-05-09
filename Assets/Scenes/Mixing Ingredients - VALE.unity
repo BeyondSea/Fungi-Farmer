@@ -1696,6 +1696,7 @@ MonoBehaviour:
   catTestButton: {fileID: 1699292047}
   dogTestButton: {fileID: 1871676749}
   youTestButton: {fileID: 626685238}
+  passNightButton: {fileID: 1495590964}
   correctRecipe: 000000000000000000000000
   isPositiveOrNegative: 0
   requestDescr: {fileID: 1971297658}

@@ -48,6 +48,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public Button catTestButton;
     [SerializeField] public Button dogTestButton;
     [SerializeField] public Button youTestButton;
+    [SerializeField] public Button passNightButton;
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -96,6 +97,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         GenerateRecipe();
         GenerateRecipeDescription();
+
+        passNightButton.interactable = false;
 
         //numOfRatsText.text = numberOfRats.ToString();
     }
@@ -222,6 +225,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
             slider.value = cupFilledTotal;
         }
+
+        if (cupFilledTotal == cupCapacity)
+        {
+            passNightButton.interactable = true;
+        }
     }
 
     public void PassNight()
@@ -231,6 +239,9 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // mostra altro canvas
         IngredientMixingCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
+
+        // Disattiva bottone notte
+        passNightButton.interactable = false;
 
         if (animalsLeft > 0)
         {
