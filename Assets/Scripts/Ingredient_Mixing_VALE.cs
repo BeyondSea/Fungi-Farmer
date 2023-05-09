@@ -49,6 +49,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public Button dogTestButton;
     [SerializeField] public Button youTestButton;
     [SerializeField] public Button passNightButton;
+    [SerializeField] public Button moldMadeOkButton;
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -70,6 +71,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private GameObject requestCanvas;
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private GameObject loseCanvas;
+    [SerializeField] private GameObject moldMadeCanvas;
 
     //Test Subjects Images
     [SerializeField] public Image ratImage;
@@ -89,6 +91,9 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public AudioSource catAudio;
     [SerializeField] public AudioSource dogAudio;
     [SerializeField] public AudioSource youAudio;
+
+    //Created mold
+    [SerializeField] public Image yourMoldImage;
 
     #endregion
     
@@ -235,9 +240,55 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     public void PassNight()
     {
         // Animazione del passaggio della notte?
-
-        // mostra altro canvas
+        
+        requestCanvas.SetActive(false);
         IngredientMixingCanvas.SetActive(false);
+        moldMadeCanvas.SetActive(true);
+
+        moldMadeOkButton.interactable = true;
+
+        /* mostra altro canvas
+        IngredientMixingCanvas.SetActive(false);
+        NewDayCanvas.SetActive(true);
+
+        // Disattiva bottone notte
+        passNightButton.interactable = false;
+
+        if (animalsLeft > 0)
+        {
+            ratTestButton.interactable = true;
+            catTestButton.interactable = true;
+            dogTestButton.interactable = true;
+            youTestButton.interactable = true;
+        }
+
+        if (animalsLeft == 4)
+        {
+            ratOption.SetActive(true);
+        }
+        else if (animalsLeft == 3)
+        {
+            ratOption.SetActive(false);
+            catOption.SetActive(true);
+        }
+        else if (animalsLeft == 2)
+        {
+            catOption.SetActive(false);
+            dogOption.SetActive(true);
+
+        }
+        else if (animalsLeft == 1)
+        {
+            dogOption.SetActive(false);
+            youOption.SetActive(true);
+        }*/
+    }
+
+    public void MoldMadeOk()
+    {
+        // mostra altro canvas
+        requestCanvas.SetActive(true);
+        moldMadeCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
 
         // Disattiva bottone notte
