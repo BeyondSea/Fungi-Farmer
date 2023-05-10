@@ -58,7 +58,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
-    [SerializeField] private bool isPositiveOrNegative;   // true means that is a positive recipe, false means that it's negative
+    [SerializeField] private bool isPositive;   // true means that is a positive recipe, false means that it's negative
     [SerializeField] private TMP_Text requestDescr;
     [SerializeField] private TMP_Text[] CorrectRecipeScoreText = new TMP_Text[numIngredients];
 
@@ -122,7 +122,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // positive: se contengono materiale vegetale
     // negative: se contengono carne
     // e che di conseguenza le ricette non possano avere sia carne che materiale vegetale.
-    // Infine presumo che le ricette non debbano per forza riempire il recipiente, ma che possano anche avere meno unità di ingredienti
+    // Infine presumo che le ricette debbano per forza riempire il recipiente.
 
     private void GenerateRecipe()
     {
@@ -130,17 +130,14 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         int temp = Random.Range(0, 2);
         if (temp == 0)
         {
-            isPositiveOrNegative = false;
+            isPositive = true;
         }
-        else {isPositiveOrNegative = true;}
-
-        // Decide amount of Ingredients
-        int sum = 0;
+        else {isPositive = false;}
 
         // Activator (Plant Matter or Meat)
         // Has to be at least 1 but not the same as the limit
         // as there must be at least 1 water
-        if (isPositiveOrNegative == false)
+        if (isPositive == false)
         {
             correctRecipe[1] = Random.Range(1, cupCapacity);
         }
@@ -148,20 +145,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             correctRecipe[2] = Random.Range(1, cupCapacity);
         }
-        sum += correctRecipe[1];
-        sum += correctRecipe[2];
 
         // Water
         // Has to be at least 1 
-        correctRecipe[0] = Random.Range(1, cupCapacity-sum+1);
-        sum += correctRecipe[0];
-
-        /*
-        // Fertilizzante
-        // Can be any value
-        correctRecipe[3] = Random.Range(0, cupCapacity-sum+1);
-        sum += correctRecipe[0];
-        */
+        correctRecipe[0] = cupCapacity - correctRecipe[1] - correctRecipe[2];
     }
 
     private void GenerateRecipeDescription()
@@ -183,7 +170,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
 
         //Materiale organico
-        if (isPositiveOrNegative == false)
+        if (isPositive == false)
         {
             requestDescr.text += "poisonius.";
         }
@@ -194,7 +181,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         
         /* Type
         requestDescr.text = "Vorrei una muffa ";
-        if (isPositiveOrNegative == false)
+        if (isPositive == false)
         {
             requestDescr.text += "velenosa";
         }
@@ -343,32 +330,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             
             //If rat is left, and recipe has meat
             //then if rat is left, and recipe has vegs
-            if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
@@ -384,32 +371,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             catImage.sprite = emptyImage;
             
             //same, if cat
-            if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[5];
@@ -424,32 +411,32 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             dogImage.sprite = emptyImage;
            
            //same, if dog
-            if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[5];
@@ -464,36 +451,36 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             youImage.sprite = emptyImage;
 
            //same, if you
-            if (playerRecipe[1] > correctRecipe[1] && isPositiveOrNegative == false)
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[0];
                 YouDie();
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[1];
                 YouDie();
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositiveOrNegative == false)
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[2];
                 YouDie();
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[3];
                 YouDie();
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositiveOrNegative == true)
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[5];
