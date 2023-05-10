@@ -96,6 +96,9 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     //Created mold
     [SerializeField] public Image moldMadeImage;
     [SerializeField] public Image yourMoldImage;
+    [SerializeField] public Image yourMoldFace;
+    [SerializeField] public Sprite yourMoldFaceHealthy;
+    [SerializeField] public Sprite yourMoldFacePoison;
 
     #endregion
     
@@ -256,6 +259,16 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         moldColor[3] = 1;
 
         moldMadeImage.GetComponent<Image>().color = moldColor;
+
+        //Scambia faccia della muffa
+        if (playerRecipe[1] > 0)
+        {
+            yourMoldFace.sprite = yourMoldFacePoison;
+        }
+        else
+        {
+            yourMoldFace.sprite = yourMoldFaceHealthy;
+        }
     }
 
     public void MoldMadeOk()
