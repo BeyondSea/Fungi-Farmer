@@ -32,14 +32,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private TMP_Text cupFilledText;
     public Slider slider;
 
-    // Rats settings
-    [SerializeField] public int animalsLeft = 4;
-    [SerializeField] private TMP_Text numOfRatsText;
-    [SerializeField] private TMP_Text TestCommentText;
-
     // Coins
     [SerializeField] private int coins = 20;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
+    [SerializeField] private Button buyRat;
+    [SerializeField] private GameObject buyRatGameObject;
     
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -77,6 +74,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject moldMadeCanvas;
 
+    // Test subjects details
+    [SerializeField] public int animalsLeft = 4;
+    [SerializeField] public int animalsBeforeBuying;
+    [SerializeField] private TMP_Text TestCommentText;
+
     //Test Subjects Images
     [SerializeField] public Image ratImage;
     [SerializeField] public Image catImage;
@@ -112,8 +114,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         passNightButton.interactable = false;
         RefreshCoinsCounters();
-
-        //numOfRatsText.text = numberOfRats.ToString();
+        animalsBeforeBuying = animalsLeft;
     }
 
     // Presumo che sia necessario che le ricette abbiano sempre
@@ -178,41 +179,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             requestDescr.text += "healthy.";
         }
-        
-        /* Type
-        requestDescr.text = "Vorrei una muffa ";
-        if (isPositive == false)
-        {
-            requestDescr.text += "velenosa";
-        }
-        else
-        {
-            requestDescr.text += "curativa";
-        }
-        
-        // Speed -> amount of activator
-        if (correctRecipe[1]>6 || correctRecipe[2]>6)
-        {
-            requestDescr.text += " che agisca velocemente.\n";
-        }
-        else if (correctRecipe[1]<4 || correctRecipe[2]<4)
-        {
-            requestDescr.text += " che agisca lentamente.\n";
-        }*/
-        
-        // Water -> ???
-
-        /*
-        // Quantity -> amount of Fertilizer
-        if (correctRecipe[3]>6)
-        {
-            requestDescr.text += "Devo farne una bella scorta, quindi me ne servirà un po'.";
-        }
-        else if (correctRecipe[3]<4)
-        {
-            requestDescr.text += "Non me ne serve tanta, probabilmente solo una dose.";
-        }
-        */
     }
 
     public void AddIngredient(int ingredientIndex)
@@ -291,22 +257,26 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         if (animalsLeft == 4)
         {
             ratOption.SetActive(true);
+            buyRatGameObject.SetActive(false);
         }
         else if (animalsLeft == 3)
         {
             ratOption.SetActive(false);
             catOption.SetActive(true);
+            buyRatGameObject.SetActive(true);
         }
         else if (animalsLeft == 2)
         {
             catOption.SetActive(false);
             dogOption.SetActive(true);
+            buyRatGameObject.SetActive(true);
 
         }
         else if (animalsLeft == 1)
         {
             dogOption.SetActive(false);
             youOption.SetActive(true);
+            buyRatGameObject.SetActive(true);
         }
 
         //Colore della muffa
@@ -323,7 +293,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         else if (animalsLeft == 4)
         {
-            animalsLeft--;
+            if (animalsLeft != animalsBeforeBuying)
+            {
+                animalsLeft = animalsBeforeBuying;
+            }
+            else {animalsLeft--;}
 
             ratTestButton.interactable = false;
             ratImage.sprite = emptyImage;
@@ -488,12 +462,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
     }
 
-    public void GoBackToPassNight()
-    {
-        // mostra altro canvas
-        NewDayCanvas.SetActive(true);
-    }
-
     public void ThrowAwayMold()
     {
         //reset della muffa
@@ -615,5 +583,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             coinsCounter[j].SetText("Coins: " + coins.ToString());
         }
+    }
+
+    public void BuyRat()
+    {
+        animalsBeforeBuying = animalsLeft;
+        animalsLeft = 4;
     }
 }
