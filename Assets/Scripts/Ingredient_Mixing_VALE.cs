@@ -233,7 +233,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             int cost = GetCost(ingredientIndex);
             if (cost <= coins)
             {
-                coin =- cost;
+                coins =- cost;
                 playerRecipe[ingredientIndex]++;
                 cupFilledTotal++;
 
