@@ -25,6 +25,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // (3: Fertilizer)
     //[SerializeField] private Color[] ingredientColors;
     [SerializeField] private Color moldColor; 
+    [SerializeField] private int coins = 5;
 
     // Cup Settings
     [SerializeField] static private int cupCapacity = 10;
@@ -120,6 +121,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // negative: se contengono carne
     // e che di conseguenza le ricette non possano avere sia carne che materiale vegetale.
     // Infine presumo che le ricette non debbano per forza riempire il recipiente, ma che possano anche avere meno unità di ingredienti
+
     private void GenerateRecipe()
     {
         // Decide whether the recipe is positive or negative
@@ -228,12 +230,17 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         if (cupFilledTotal < cupCapacity)
         {
-            playerRecipe[ingredientIndex]++;
-            cupFilledTotal++;
+            int cost = GetCost(ingredientIndex);
+            if (cost <= coins)
+            {
+                coin =- cost;
+                playerRecipe[ingredientIndex]++;
+                cupFilledTotal++;
 
-            playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
-            cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
-            slider.value = cupFilledTotal;
+                playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
+                cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
+                slider.value = cupFilledTotal;
+            }        
         }
 
         if (cupFilledTotal == cupCapacity)
@@ -525,7 +532,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
-            winCanvas.SetActive(true);
+            coins += 5;
+            // winCanvas.SetActive(true);
         }
         else
         {
@@ -543,6 +551,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
                 playerScoreText[m].text = playerRecipe[m].ToString();
             }
         }
+
+        if (coins >= 20)
+        {
+            winCanvas.SetActive(true);
+        }
     }
 
     public void YouDie()
@@ -558,5 +571,37 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         catAudio.Play(0);
         dogAudio.Play(0);
         youAudio.Play(0);
+    }
+
+    // costo ingredienti
+    // acqua = 0
+    // verdura e carne = 1
+    // si possono comprare solo i topi!
+    // topi = 2
+
+    public int GetCost(int ingredientIndex)
+    {
+        switch (ingredientIndex)
+            {
+                // acqua
+                case 0:
+                    return 0;
+                // carne
+                case 1:
+                    return 1;
+                // verdura
+                case 2:
+                    return 1;
+                default:
+                    return 1;
+            }
+    }
+
+    public void NextClient()
+    {
+        GenerateRecipe();
+        GenerateRecipeDescription();
+        ThrowAwayMold();
+        passNightButton.interactable = false;
     }
 }
