@@ -23,6 +23,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // 1: Meat
     // 2: Plant Matter
     // (3: Fertilizer)
+    //[SerializeField] private Color[] ingredientColors;
+    [SerializeField] private Color moldColor; 
 
     // Cup Settings
     [SerializeField] static private int cupCapacity = 10;
@@ -31,7 +33,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     public Slider slider;
 
     // Rats settings
-    //[SerializeField] static private int numberOfRats = 2;
     [SerializeField] public int animalsLeft = 4;
     [SerializeField] private TMP_Text numOfRatsText;
     [SerializeField] private TMP_Text TestCommentText;
@@ -93,6 +94,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public AudioSource youAudio;
 
     //Created mold
+    [SerializeField] public Image moldMadeImage;
     [SerializeField] public Image yourMoldImage;
 
     #endregion
@@ -247,41 +249,13 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         moldMadeOkButton.interactable = true;
 
-        /* mostra altro canvas
-        IngredientMixingCanvas.SetActive(false);
-        NewDayCanvas.SetActive(true);
+        //Prendi quantità ingredienti e trasformali in colore, poi applicalo
+        moldColor[2] = playerRecipe[0];
+        moldColor[0] = playerRecipe[1];
+        moldColor[1] = playerRecipe[2];
+        moldColor[3] = 1;
 
-        // Disattiva bottone notte
-        passNightButton.interactable = false;
-
-        if (animalsLeft > 0)
-        {
-            ratTestButton.interactable = true;
-            catTestButton.interactable = true;
-            dogTestButton.interactable = true;
-            youTestButton.interactable = true;
-        }
-
-        if (animalsLeft == 4)
-        {
-            ratOption.SetActive(true);
-        }
-        else if (animalsLeft == 3)
-        {
-            ratOption.SetActive(false);
-            catOption.SetActive(true);
-        }
-        else if (animalsLeft == 2)
-        {
-            catOption.SetActive(false);
-            dogOption.SetActive(true);
-
-        }
-        else if (animalsLeft == 1)
-        {
-            dogOption.SetActive(false);
-            youOption.SetActive(true);
-        }*/
+        moldMadeImage.GetComponent<Image>().color = moldColor;
     }
 
     public void MoldMadeOk()
@@ -294,6 +268,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         // Disattiva bottone notte
         passNightButton.interactable = false;
 
+        //Se mostra opzioni di tet
         if (animalsLeft > 0)
         {
             ratTestButton.interactable = true;
@@ -302,6 +277,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             youTestButton.interactable = true;
         }
 
+        //Quale opzione di test mostra
         if (animalsLeft == 4)
         {
             ratOption.SetActive(true);
@@ -322,6 +298,9 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             dogOption.SetActive(false);
             youOption.SetActive(true);
         }
+
+        //Colore della muffa
+        yourMoldImage.GetComponent<Image>().color = moldColor;
     }
 
     public void TestResult()
@@ -558,11 +537,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         NewDayCanvas.SetActive(false);
         requestCanvas.SetActive(false);
         loseCanvas.SetActive(true);
-    }
-
-    void Update()
-    {
-        //Debug.Log("animals left" +animalsLeft);
     }
 
     public void PlaySoundEffect()

@@ -853,7 +853,7 @@ GameObject:
   - component: {fileID: 207150094}
   - component: {fileID: 207150093}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Canvas - Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,6 +1620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac7cc00d8513d644b75e4ff7202505e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moldColor: {r: 1, g: 1, b: 1, a: 0}
   cupFilledTotal: 0
   cupFilledText: {fileID: 1784728359}
   slider: {fileID: 1524509387}
@@ -1698,7 +1699,7 @@ MonoBehaviour:
   dogTestButton: {fileID: 1871676749}
   youTestButton: {fileID: 626685238}
   passNightButton: {fileID: 1495590964}
-  moldMadeOkButton: {fileID: 0}
+  moldMadeOkButton: {fileID: 713732884}
   correctRecipe: 000000000000000000000000
   isPositiveOrNegative: 0
   requestDescr: {fileID: 1971297658}
@@ -1737,7 +1738,8 @@ MonoBehaviour:
   catAudio: {fileID: 1699292050}
   dogAudio: {fileID: 1871676752}
   youAudio: {fileID: 626685241}
-  yourMoldImage: {fileID: 0}
+  moldMadeImage: {fileID: 1332476687}
+  yourMoldImage: {fileID: 843043825}
 --- !u!114 &448977102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,7 +1797,7 @@ GameObject:
   - component: {fileID: 453135185}
   - component: {fileID: 453135184}
   m_Layer: 0
-  m_Name: image 8
+  m_Name: image 8 - Your Mold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2292,7 +2294,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -6, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3492,7 +3494,7 @@ GameObject:
   - component: {fileID: 656048752}
   - component: {fileID: 656048751}
   m_Layer: 0
-  m_Name: 'Rat Image '
+  m_Name: 'Image - Rat '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3539,7 +3541,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 647e7ff5b85c00a49862a54d772a20bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34f4773bb0c43d44ab9870258ccf7135, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3590,7 +3592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 647e7ff5b85c00a49862a54d772a20bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34f4773bb0c43d44ab9870258ccf7135, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3758,7 +3760,7 @@ GameObject:
   - component: {fileID: 695193398}
   - component: {fileID: 695193397}
   m_Layer: 0
-  m_Name: image_3-removebg-preview
+  m_Name: Image - Meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3856,7 +3858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 50a7238d41d21a94e88c97bdc7492d97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff5a54377eaebc0499b1c01168262c3f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4876,7 +4878,7 @@ GameObject:
   - component: {fileID: 843043826}
   - component: {fileID: 843043825}
   m_Layer: 5
-  m_Name: MoldImage
+  m_Name: Image - Your Mold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5278,7 +5280,7 @@ GameObject:
   - component: {fileID: 985516574}
   - component: {fileID: 985516573}
   m_Layer: 0
-  m_Name: image 2
+  m_Name: Image - Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5325,7 +5327,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 617e6b857838b7a4f8fb7c44504a269a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f045ea1056f4d744854e887fc20edce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5376,7 +5378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 617e6b857838b7a4f8fb7c44504a269a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f045ea1056f4d744854e887fc20edce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5990,7 +5992,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 290, y: 145}
+  m_AnchoredPosition: {x: 293, y: 110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1108714803
@@ -7021,7 +7023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1260316301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7735,7 +7737,7 @@ GameObject:
   - component: {fileID: 1332476688}
   - component: {fileID: 1332476687}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image - Mold Made
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9164,7 +9166,7 @@ GameObject:
   - component: {fileID: 1564880612}
   - component: {fileID: 1564880611}
   m_Layer: 0
-  m_Name: image 1
+  m_Name: Image - Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9262,7 +9264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c541b2641df41b441824a27c18e316b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7bd8eb5b476898f4db8dbb9fe5b6fd7c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13816,7 +13818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2145109735
 MonoBehaviour:
   m_ObjectHideFlags: 0
