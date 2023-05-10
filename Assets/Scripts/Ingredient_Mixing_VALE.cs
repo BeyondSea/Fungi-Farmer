@@ -519,7 +519,8 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
-            winCanvas.SetActive(true);
+            coins += 5;
+            // winCanvas.SetActive(true);
         }
         else
         {
@@ -536,6 +537,11 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 playerScoreText[m].text = playerRecipe[m].ToString();
             }
+        }
+
+        if (coins >= 20)
+        {
+            winCanvas.SetActive(true);
         }
     }
 
@@ -576,5 +582,13 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
                 default:
                     return 1;
             }
+    }
+
+    public void NextClient()
+    {
+        GenerateRecipe();
+        GenerateRecipeDescription();
+        ThrowAwayMold();
+        passNightButton.interactable = false;
     }
 }
