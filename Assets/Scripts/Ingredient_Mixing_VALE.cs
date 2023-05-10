@@ -25,7 +25,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // (3: Fertilizer)
     //[SerializeField] private Color[] ingredientColors;
     [SerializeField] private Color moldColor; 
-    [SerializeField] private int coins = 5;
 
     // Cup Settings
     [SerializeField] static private int cupCapacity = 10;
@@ -37,6 +36,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public int animalsLeft = 4;
     [SerializeField] private TMP_Text numOfRatsText;
     [SerializeField] private TMP_Text TestCommentText;
+
+    // Coins
+    [SerializeField] private int coins = 20;
+    [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
     
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -67,7 +70,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // Canvases
     [SerializeField] private GameObject IngredientMixingCanvas;
     [SerializeField] private GameObject NewDayCanvas;
-    [SerializeField] private GameObject TestResultCanvas;
     [SerializeField] private GameObject ScoreCanvas;
     [SerializeField] private GameObject TestResultTextBox;
     [SerializeField] private GameObject requestCanvas;
@@ -103,13 +105,13 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     #endregion
     
-// Start is called before the first frame update
     void Start()
     {
         GenerateRecipe();
         GenerateRecipeDescription();
 
         passNightButton.interactable = false;
+        RefreshCoinsCounters();
 
         //numOfRatsText.text = numberOfRats.ToString();
     }
@@ -233,13 +235,14 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             int cost = GetCost(ingredientIndex);
             if (cost <= coins)
             {
-                coins =- cost;
+                coins -= cost;
                 playerRecipe[ingredientIndex]++;
                 cupFilledTotal++;
 
                 playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
                 cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
                 slider.value = cupFilledTotal;
+                RefreshCoinsCounters();
             }        
         }
 
@@ -501,7 +504,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     public void GoBackToPassNight()
     {
         // mostra altro canvas
-        TestResultCanvas.SetActive(false);
         NewDayCanvas.SetActive(true);
     }
 
@@ -533,6 +535,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
             coins += 5;
+            RefreshCoinsCounters();
             // winCanvas.SetActive(true);
         }
         else
@@ -552,7 +555,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             }
         }
 
-        if (coins >= 20)
+        if (coins >= 30)
         {
             winCanvas.SetActive(true);
         }
@@ -601,7 +604,29 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     {
         GenerateRecipe();
         GenerateRecipeDescription();
-        ThrowAwayMold();
+
+        // reset muffa
+        for (int j=0; j<numIngredients; j++)
+        {
+            playerRecipe[j] = 0;
+            playerRecipeText[j].SetText("0");
+        }
+        cupFilledText.text = "Total: 0/10";
+        cupFilledTotal = 0;
+        slider.value = cupFilledTotal;
+
         passNightButton.interactable = false;
+
+        ScoreCanvas.SetActive(false);
+        requestCanvas.SetActive(true);
+        IngredientMixingCanvas.SetActive(true);
+    }
+
+    public void RefreshCoinsCounters()
+    {
+        for (int j=0; j<coinsCounter.Length; j++)
+        {
+            coinsCounter[j].SetText("Coins: " + coins.ToString());
+        }
     }
 }
