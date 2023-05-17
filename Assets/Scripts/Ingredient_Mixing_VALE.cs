@@ -35,7 +35,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // Coins
     [SerializeField] private int coins = 20;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
-    [SerializeField] private Button buyRat;
     [SerializeField] private GameObject buyRatGameObject;
     
     //Test Dialogues
@@ -52,6 +51,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public Button youTestButton;
     [SerializeField] public Button passNightButton;
     [SerializeField] public Button moldMadeOkButton;
+    [SerializeField] public Button buyRatButton;
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -76,7 +76,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     // Test subjects details
     [SerializeField] public int animalsLeft = 4;
-    [SerializeField] public int animalsBeforeBuying;
+    [SerializeField] public bool ratBought = false;
     [SerializeField] private TMP_Text TestCommentText;
 
     //Test Subjects Images
@@ -85,6 +85,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public Image dogImage;
     [SerializeField] public Image youImage;
     [SerializeField] public Sprite emptyImage;
+    [SerializeField] public Sprite originalRatImage;
 
     //Test Subjects Options
     [SerializeField] public GameObject ratOption;
@@ -114,7 +115,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         passNightButton.interactable = false;
         RefreshCoinsCounters();
-        animalsBeforeBuying = animalsLeft;
+        // animalsBeforeBuying = animalsLeft;
     }
 
     // Presumo che sia necessario che le ricette abbiano sempre
@@ -245,6 +246,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         passNightButton.interactable = false;
 
         //Se mostra opzioni di tet
+        if (animalsLeft < 4)
+        {
+            buyRatGameObject.SetActive(true);
+            buyRatButton.interactable = true;
+        }
+
         if (animalsLeft > 0)
         {
             ratTestButton.interactable = true;
@@ -254,28 +261,41 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
 
         //Quale opzione di test mostra
-        if (animalsLeft == 4)
+        if (animalsLeft == 4 || ratBought)
         {
             ratOption.SetActive(true);
+            catOption.SetActive(false);
+            dogOption.SetActive(false);
+            youOption.SetActive(false);
+
             buyRatGameObject.SetActive(false);
         }
         else if (animalsLeft == 3)
         {
             ratOption.SetActive(false);
             catOption.SetActive(true);
+            dogOption.SetActive(false);
+            youOption.SetActive(false);
+
             buyRatGameObject.SetActive(true);
         }
         else if (animalsLeft == 2)
         {
+            ratOption.SetActive(false);
             catOption.SetActive(false);
             dogOption.SetActive(true);
+            youOption.SetActive(false);
+
             buyRatGameObject.SetActive(true);
 
         }
         else if (animalsLeft == 1)
         {
+            ratOption.SetActive(false);
+            catOption.SetActive(false);
             dogOption.SetActive(false);
             youOption.SetActive(true);
+
             buyRatGameObject.SetActive(true);
         }
 
@@ -285,19 +305,56 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     public void TestResult()
     {
+        buyRatButton.interactable = false;
+
+        // ricetta mista
         if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
         {
             TestCommentText.text = "";
             TestCommentText.text = failedTestDialogue;
         }
+        // si ha un ratto comprato
+        else if (ratBought)
+        {
+            ratTestButton.interactable = false;
+            ratImage.sprite = emptyImage;
+            ratBought = false;
+            
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[5];
+            }
+        }
 
         else if (animalsLeft == 4)
         {
-            if (animalsLeft != animalsBeforeBuying)
-            {
-                animalsLeft = animalsBeforeBuying;
-            }
-            else {animalsLeft--;}
+            animalsLeft--;
 
             ratTestButton.interactable = false;
             ratImage.sprite = emptyImage;
@@ -587,7 +644,15 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     public void BuyRat()
     {
-        animalsBeforeBuying = animalsLeft;
-        animalsLeft = 4;
+        ratBought = true;
+        buyRatButton.interactable = false;
+
+        ratTestButton.interactable = true;
+        ratImage.sprite = originalRatImage;
+        ratOption.SetActive(true);
+
+        catOption.SetActive(false);
+        dogOption.SetActive(false);
+        youOption.SetActive(false);
     }
 }
