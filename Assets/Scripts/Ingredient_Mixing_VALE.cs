@@ -32,14 +32,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private TMP_Text cupFilledText;
     public Slider slider;
 
-    // Rats settings
-    [SerializeField] public int animalsLeft = 4;
-    [SerializeField] private TMP_Text numOfRatsText;
-    [SerializeField] private TMP_Text TestCommentText;
-
     // Coins
     [SerializeField] private int coins = 20;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
+    [SerializeField] private GameObject buyRatGameObject;
     
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -55,6 +51,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] public Button youTestButton;
     [SerializeField] public Button passNightButton;
     [SerializeField] public Button moldMadeOkButton;
+    [SerializeField] public Button buyRatButton;
 
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
@@ -77,12 +74,18 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject moldMadeCanvas;
 
+    // Test subjects details
+    [SerializeField] public int animalsLeft = 4;
+    [SerializeField] public bool ratBought = false;
+    [SerializeField] private TMP_Text TestCommentText;
+
     //Test Subjects Images
     [SerializeField] public Image ratImage;
     [SerializeField] public Image catImage;
     [SerializeField] public Image dogImage;
     [SerializeField] public Image youImage;
     [SerializeField] public Sprite emptyImage;
+    [SerializeField] public Sprite originalRatImage;
 
     //Test Subjects Options
     [SerializeField] public GameObject ratOption;
@@ -112,8 +115,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         passNightButton.interactable = false;
         RefreshCoinsCounters();
-
-        //numOfRatsText.text = numberOfRats.ToString();
+        // animalsBeforeBuying = animalsLeft;
     }
 
     // Presumo che sia necessario che le ricette abbiano sempre
@@ -178,41 +180,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             requestDescr.text += "healthy.";
         }
-        
-        /* Type
-        requestDescr.text = "Vorrei una muffa ";
-        if (isPositive == false)
-        {
-            requestDescr.text += "velenosa";
-        }
-        else
-        {
-            requestDescr.text += "curativa";
-        }
-        
-        // Speed -> amount of activator
-        if (correctRecipe[1]>6 || correctRecipe[2]>6)
-        {
-            requestDescr.text += " che agisca velocemente.\n";
-        }
-        else if (correctRecipe[1]<4 || correctRecipe[2]<4)
-        {
-            requestDescr.text += " che agisca lentamente.\n";
-        }*/
-        
-        // Water -> ???
-
-        /*
-        // Quantity -> amount of Fertilizer
-        if (correctRecipe[3]>6)
-        {
-            requestDescr.text += "Devo farne una bella scorta, quindi me ne servirà un po'.";
-        }
-        else if (correctRecipe[3]<4)
-        {
-            requestDescr.text += "Non me ne serve tanta, probabilmente solo una dose.";
-        }
-        */
     }
 
     public void AddIngredient(int ingredientIndex)
@@ -279,6 +246,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         passNightButton.interactable = false;
 
         //Se mostra opzioni di tet
+        if (animalsLeft < 4)
+        {
+            buyRatGameObject.SetActive(true);
+            buyRatButton.interactable = true;
+        }
+
         if (animalsLeft > 0)
         {
             ratTestButton.interactable = true;
@@ -288,25 +261,42 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
 
         //Quale opzione di test mostra
-        if (animalsLeft == 4)
+        if (animalsLeft == 4 || ratBought)
         {
             ratOption.SetActive(true);
+            catOption.SetActive(false);
+            dogOption.SetActive(false);
+            youOption.SetActive(false);
+
+            buyRatGameObject.SetActive(false);
         }
         else if (animalsLeft == 3)
         {
             ratOption.SetActive(false);
             catOption.SetActive(true);
+            dogOption.SetActive(false);
+            youOption.SetActive(false);
+
+            buyRatGameObject.SetActive(true);
         }
         else if (animalsLeft == 2)
         {
+            ratOption.SetActive(false);
             catOption.SetActive(false);
             dogOption.SetActive(true);
+            youOption.SetActive(false);
+
+            buyRatGameObject.SetActive(true);
 
         }
         else if (animalsLeft == 1)
         {
+            ratOption.SetActive(false);
+            catOption.SetActive(false);
             dogOption.SetActive(false);
             youOption.SetActive(true);
+
+            buyRatGameObject.SetActive(true);
         }
 
         //Colore della muffa
@@ -315,10 +305,51 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     public void TestResult()
     {
+        buyRatButton.interactable = false;
+
+        // ricetta mista
         if (playerRecipe[1] > 0 && playerRecipe[2] > 0)
         {
             TestCommentText.text = "";
             TestCommentText.text = failedTestDialogue;
+        }
+        // si ha un ratto comprato
+        else if (ratBought)
+        {
+            ratTestButton.interactable = false;
+            ratImage.sprite = emptyImage;
+            ratBought = false;
+            
+            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[0];
+            }
+            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[1];
+            }
+            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[2];
+            }
+            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[3];
+            }
+            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[4];
+            }
+            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[5];
+            }
         }
 
         else if (animalsLeft == 4)
@@ -488,12 +519,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
     }
 
-    public void GoBackToPassNight()
-    {
-        // mostra altro canvas
-        NewDayCanvas.SetActive(true);
-    }
-
     public void ThrowAwayMold()
     {
         //reset della muffa
@@ -555,12 +580,26 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         loseCanvas.SetActive(true);
     }
 
-    public void PlaySoundEffect()
+    public void PlaySoundEffect(string testSubjectStringForSound)
     {
-        ratAudio.Play(0);
-        catAudio.Play(0);
-        dogAudio.Play(0);
-        youAudio.Play(0);
+        switch (testSubjectStringForSound)
+        {
+            case "rat":
+                ratAudio.Play(0);
+                break;
+            case "cat":
+                catAudio.Play(0);
+                break;
+            case "dog":
+                dogAudio.Play(0);
+                break;
+            case "you":
+                youAudio.Play(0);
+                break;
+            default:
+                Debug.Log("Missing sound name inside button");
+                break;
+        }
     }
 
     // costo ingredienti
@@ -615,5 +654,19 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         {
             coinsCounter[j].SetText("Coins: " + coins.ToString());
         }
+    }
+
+    public void BuyRat()
+    {
+        ratBought = true;
+        buyRatButton.interactable = false;
+
+        ratTestButton.interactable = true;
+        ratImage.sprite = originalRatImage;
+        ratOption.SetActive(true);
+
+        catOption.SetActive(false);
+        dogOption.SetActive(false);
+        youOption.SetActive(false);
     }
 }
