@@ -36,6 +36,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     [SerializeField] private int coins = 20;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
     [SerializeField] private GameObject buyRatGameObject;
+    [SerializeField] private int ratCost = 1;
     
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -246,7 +247,7 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         passNightButton.interactable = false;
 
         //Se mostra opzioni di tet
-        if (animalsLeft < 4)
+        if ( (animalsLeft < 4) && (ratCost <= coins) )
         {
             buyRatGameObject.SetActive(true);
             buyRatButton.interactable = true;
@@ -267,8 +268,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             catOption.SetActive(false);
             dogOption.SetActive(false);
             youOption.SetActive(false);
-
-            buyRatGameObject.SetActive(false);
         }
         else if (animalsLeft == 3)
         {
@@ -276,8 +275,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             catOption.SetActive(true);
             dogOption.SetActive(false);
             youOption.SetActive(false);
-
-            buyRatGameObject.SetActive(true);
         }
         else if (animalsLeft == 2)
         {
@@ -285,9 +282,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             catOption.SetActive(false);
             dogOption.SetActive(true);
             youOption.SetActive(false);
-
-            buyRatGameObject.SetActive(true);
-
         }
         else if (animalsLeft == 1)
         {
@@ -295,8 +289,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             catOption.SetActive(false);
             dogOption.SetActive(false);
             youOption.SetActive(true);
-
-            buyRatGameObject.SetActive(true);
         }
 
         //Colore della muffa
@@ -659,7 +651,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     public void BuyRat()
     {
         ratBought = true;
+        
         buyRatButton.interactable = false;
+        coins -= ratCost;
+        RefreshCoinsCounters();
 
         ratTestButton.interactable = true;
         ratImage.sprite = originalRatImage;
