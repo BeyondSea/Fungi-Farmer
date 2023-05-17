@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1706.6667
     height: 869.3334
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Console
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 462.00012
     height: 819.3334
-  m_MinSize: {x: 276, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 45
+  controlID: 68
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 96
+  controlID: 17
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 97
+  controlID: 18
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 301.33334
     height: 568.6667
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -442,10 +442,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 909c0000
-      m_LastClickedID: 40080
-      m_ExpandedIDs: e8daffff24fbffffc65d0000165f0000949a0000
+      scrollPos: {x: 0, y: 225.33331}
+      m_SelectedIDs: 0a760000
+      m_LastClickedID: 30218
+      m_ExpandedIDs: 8ef6ffffeaf6ffff32f7ffff8ef7ffffdef7ffffd4f8ffff12f9ffff6cf9ffffb6f9ffff10faffff12fbffff8672000092720000d872000036730000427300004e73000032740000a27400001e75000036750000d4750000f2750000b0760000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -750,9 +750,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 502.76288, y: 287.77307, z: -0.607507}
+    m_Target: {x: 416.8145, y: 300.04144, z: -4.4555016}
     speed: 2
-    m_Value: {x: 502.76288, y: 287.77307, z: -0.607507}
+    m_Value: {x: 416.8145, y: 300.04144, z: -4.4555016}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -803,9 +803,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 319.56482
+    m_Target: 398.49823
     speed: 2
-    m_Value: 319.56482
+    m_Value: 398.49823
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -853,7 +853,7 @@ MonoBehaviour:
     x: 0
     y: 641.3334
     width: 1243.6666
-    height: 229.66663
+    height: 229.66669
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -884,10 +884,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 2.333374}
-    m_SelectedIDs: b0610000
-    m_LastClickedID: 25008
-    m_ExpandedIDs: 00000000a861000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 765d0000
+    m_LastClickedID: 23926
+    m_ExpandedIDs: 000000004a5d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -915,7 +915,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a8610000
+    m_ExpandedIDs: 000000004a5d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -940,8 +940,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 16190000
-    m_LastClickedInstanceID: 6422
+    m_SelectedInstanceIDs: 0a760000
+    m_LastClickedInstanceID: 30218
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000bcae0000c45f0000c25f0000c65f0000d05f0000265c000022610000
     m_RenameOverlay:
@@ -959,7 +959,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

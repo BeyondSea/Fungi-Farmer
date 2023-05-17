@@ -580,12 +580,26 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         loseCanvas.SetActive(true);
     }
 
-    public void PlaySoundEffect()
+    public void PlaySoundEffect(string testSubjectStringForSound)
     {
-        ratAudio.Play(0);
-        catAudio.Play(0);
-        dogAudio.Play(0);
-        youAudio.Play(0);
+        switch (testSubjectStringForSound)
+        {
+            case "rat":
+                ratAudio.Play(0);
+                break;
+            case "cat":
+                catAudio.Play(0);
+                break;
+            case "dog":
+                dogAudio.Play(0);
+                break;
+            case "you":
+                youAudio.Play(0);
+                break;
+            default:
+                Debug.Log("Missing sound name inside button");
+                break;
+        }
     }
 
     // costo ingredienti
