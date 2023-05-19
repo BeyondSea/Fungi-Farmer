@@ -24,13 +24,15 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
     // 2: Plant Matter
     // (3: Fertilizer)
     //[SerializeField] private Color[] ingredientColors;
-    [SerializeField] private Color moldColor; 
+    [SerializeField] private Color moldColor;
+    [SerializeField] private Color beakerColor;
+    [SerializeField] public Image beakerImage;
+    [SerializeField] public Sprite[] beakerSprites = new Sprite[11];
 
     // Cup Settings
     [SerializeField] static private int cupCapacity = 10;
     [SerializeField] private int cupFilledTotal = 0;
     [SerializeField] private TMP_Text cupFilledText;
-    public Slider slider;
 
     // Coins
     [SerializeField] private int coins = 20;
@@ -196,8 +198,10 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
                 playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
                 cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
-                slider.value = cupFilledTotal;
                 RefreshCoinsCounters();
+
+                ChangeBeakerSprite();
+                ChangeBeakerColor();
             }        
         }
 
@@ -522,7 +526,9 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
         cupFilledText.text = "Total: 0/10";
         cupFilledTotal = 0;
-        slider.value = cupFilledTotal;
+
+        ChangeBeakerSprite();
+        ChangeBeakerColor();
 
         // ritorna all'altro canvas
         NewDayCanvas.SetActive(false);
@@ -631,7 +637,6 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         }
         cupFilledText.text = "Total: 0/10";
         cupFilledTotal = 0;
-        slider.value = cupFilledTotal;
 
         passNightButton.interactable = false;
 
@@ -663,5 +668,21 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         catOption.SetActive(false);
         dogOption.SetActive(false);
         youOption.SetActive(false);
+    }
+
+    private void ChangeBeakerColor()
+    {
+        //Prendi quantità ingredienti e trasformali in colore, poi applicalo
+        beakerColor[2] = playerRecipe[0];
+        beakerColor[0] = playerRecipe[1];
+        beakerColor[1] = playerRecipe[2];
+        beakerColor[3] = 1;
+
+        beakerImage.GetComponent<Image>().color = beakerColor;
+    }
+
+    public void ChangeBeakerSprite()
+    {
+        beakerImage.sprite = beakerSprites[cupFilledTotal];
     }
 }
