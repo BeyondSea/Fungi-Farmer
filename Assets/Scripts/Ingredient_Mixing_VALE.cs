@@ -131,6 +131,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
 
     private void GenerateRecipe()
     {
+        // Clear memory
+        for (int k=0; k<numIngredients; k++)
+        {
+            correctRecipe[k] = 0;
+        }
+
         // Decide whether the recipe is positive or negative
         int temp = Random.Range(0, 2);
         if (temp == 0)
@@ -542,11 +548,12 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
         requestCanvas.SetActive(false);
         //ScoreCanvas.SetActive(true);
 
+        // Perfect Recipe
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
             coins += 5;
             RefreshCoinsCounters();
-            // winCanvas.SetActive(true);
+            ScoreCanvas.SetActive(true);
         }
         else
         {
@@ -563,6 +570,30 @@ public class Ingredient_Mixing_VALE : MonoBehaviour
             {
                 playerScoreText[m].text = playerRecipe[m].ToString();
             }
+
+            // Partial Score
+            if ( ( isPositive && ( playerRecipe[1] > 0 ) ) || ( !isPositive && ( playerRecipe[2] > 0 ) ) )
+            {
+                coins += 0;
+                // text for having completely failed 
+            }
+            else if ( ( playerRecipe[0] - correctRecipe[0] == 1 ) || ( playerRecipe[0] - correctRecipe[0] == -1 ) )
+            {
+                coins += 3;
+                // text for almost getting it
+            }
+            else if ( ( playerRecipe[0] - correctRecipe[0] == 2 ) || ( playerRecipe[0] - correctRecipe[0] == -2 ) )
+            {
+                coins += 2;
+                // text for getting near
+            }
+            else if ( ( playerRecipe[0] - correctRecipe[0] == 3 ) || ( playerRecipe[0] - correctRecipe[0] == -3 ) )
+            {
+                coins += 1;
+                // text for barely getting it
+            }
+
+            RefreshCoinsCounters();
         }
 
         if (coins >= 30)
