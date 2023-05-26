@@ -125,6 +125,8 @@ public class Copia_Script : MonoBehaviour
 
     private void GenerateRecipe()
     {
+        Debug.Log("Generating Recipe");
+        
         // Clear memory
         for (int k=0; k<numIngredients; k++)
         {
@@ -187,6 +189,8 @@ public class Copia_Script : MonoBehaviour
 
     public void RecipeRequest()
     {
+        Debug.Log("RecipeRequesting");
+
         if (correctRecipe[1] >= 7 && isPositive == false)
         {
             recipeRequestText.text = "";
@@ -247,9 +251,7 @@ public class Copia_Script : MonoBehaviour
     }
 
     public void PassNight()
-    {
-        // Animazione del passaggio della notte?
-        
+    {        
         requestCanvas.SetActive(false);
         IngredientMixingCanvas.SetActive(false);
         moldMadeCanvas.SetActive(true);
@@ -285,7 +287,7 @@ public class Copia_Script : MonoBehaviour
         // Disattiva bottone notte
         passNightButton.interactable = false;
 
-        //Se mostra opzioni di tet
+        //Se mostra opzioni di test
         if ( (animalsLeft < 4) && (ratCost <= coins) )
         {
             buyRatGameObject.SetActive(true);
@@ -686,6 +688,8 @@ public class Copia_Script : MonoBehaviour
 
     public void NextClient()
     {
+        Debug.Log("NextClienting");
+
         GenerateRecipe();
         //GenerateRecipeDescription();
         RecipeRequest();
@@ -698,6 +702,14 @@ public class Copia_Script : MonoBehaviour
         }
         cupFilledText.text = "Total: 0/10";
         cupFilledTotal = 0;
+
+        //Reset beaker
+        beakerColor[2] = 0;
+        beakerColor[0] = 0;
+        beakerColor[1] = 0;
+        beakerColor[3] = 1;
+        beakerImage.GetComponent<Image>().color = beakerColor;
+        beakerImage.sprite = beakerSprites[0];
 
         passNightButton.interactable = false;
 
