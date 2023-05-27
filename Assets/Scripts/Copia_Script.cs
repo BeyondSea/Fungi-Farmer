@@ -52,8 +52,11 @@ public class Copia_Script : MonoBehaviour
     //[SerializeField] private TMP_Text requestDescr;
     [SerializeField] private TMP_Text[] CorrectRecipeScoreText = new TMP_Text[numIngredients];
 
+    //Request
     [SerializeField] public TMP_Text recipeRequestText;
     [SerializeField] [TextArea(3,5)] public string[] recipeRequestDialogue; 
+    [SerializeField] public Image clientPortrait;
+    [SerializeField] public Sprite[] clientPortraitSprites;
 
     // Player Recipe
     [SerializeField] private int[] playerRecipe = new int[numIngredients];
@@ -195,16 +198,19 @@ public class Copia_Script : MonoBehaviour
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[0];
+            clientPortrait.sprite = clientPortraitSprites[0];
         }
         else if (correctRecipe[1] >= 4 && correctRecipe[1] < 7 && isPositive == false)
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[1];
+            clientPortrait.sprite = clientPortraitSprites[1];
         }
         else if (correctRecipe[1] < 4 && isPositive == false)
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[2];
+            clientPortrait.sprite = clientPortraitSprites[2];
         }
         else if (correctRecipe[2] >= 7 && isPositive == true)
         {
