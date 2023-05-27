@@ -29,6 +29,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
     [SerializeField] private GameObject buyRatGameObject;
     [SerializeField] private int ratCost = 1;
+    [SerializeField] public TMP_Text coinsEarned;
     
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -583,9 +584,56 @@ public class Copia_Script : MonoBehaviour
         // mostra altro canvas
         NewDayCanvas.SetActive(false);
         requestCanvas.SetActive(false);
-        //ScoreCanvas.SetActive(true);
+        ScoreCanvas.SetActive(true);
 
-        // Perfect Recipe
+        // show correct recipe
+        for (int k=0; k<numIngredients; k++)
+        {
+            CorrectRecipeScoreText[k].text = correctRecipe[k].ToString();
+        }
+
+        // show player recipe
+        for (int m=0; m<numIngredients; m++)
+        {
+            playerScoreText[m].text = playerRecipe[m].ToString();
+        }
+        
+        //
+        //Coins Score
+        if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
+        {
+            coins += 5;
+            coinsEarned.text = "+5 Coins";
+            //Text for win
+        }
+        else if ( ( isPositive && ( playerRecipe[1] > 0 ) ) || ( !isPositive && ( playerRecipe[2] > 0 ) ) )
+        {
+            coins += 0;
+            coinsEarned.text = "+0 Coins";
+            // text for having completely failed 
+        }
+        else if ( ( playerRecipe[0] - correctRecipe[0] == 1 ) || ( playerRecipe[0] - correctRecipe[0] == -1 ) )
+        {
+            coins += 3;
+            coinsEarned.text = "+3 Coins";
+            // text for almost getting it
+        }
+        else if ( ( playerRecipe[0] - correctRecipe[0] == 2 ) || ( playerRecipe[0] - correctRecipe[0] == -2 ) )
+        {
+            coins += 2;
+            coinsEarned.text = "+2 Coins";
+            // text for getting near
+        }
+        else if ( ( playerRecipe[0] - correctRecipe[0] == 3 ) || ( playerRecipe[0] - correctRecipe[0] == -3 ) )
+        {
+            coins += 1;
+            coinsEarned.text = "+1 Coins";
+            // text for barely getting it
+        }
+
+        //RefreshCoinsCounters();
+        
+        /*// Perfect Recipe
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
             coins += 5;
@@ -631,7 +679,7 @@ public class Copia_Script : MonoBehaviour
             }
 
             RefreshCoinsCounters();
-        }
+        }*/
 
         if (coins >= 30)
         {
