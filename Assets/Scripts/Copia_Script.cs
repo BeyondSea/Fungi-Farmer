@@ -635,7 +635,7 @@ public class Copia_Script : MonoBehaviour
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[0];
         }
-        else if ( ( playerRecipe[0] - correctRecipe[0] == 1 ) || ( playerRecipe[0] - correctRecipe[0] == -1 ) )
+        else if ( ( playerRecipe[1] - correctRecipe[1] == 1 ) || ( playerRecipe[1] - correctRecipe[1] == -1 ) || ( playerRecipe[2] - correctRecipe[2] == 1 ) || ( playerRecipe[2] - correctRecipe[2] == -1 ) )
         {
             coins += 3;
             coinsEarned.text = "+3 Coins";
@@ -643,7 +643,7 @@ public class Copia_Script : MonoBehaviour
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[3];
         }
-        else if ( ( playerRecipe[0] - correctRecipe[0] == 2 ) || ( playerRecipe[0] - correctRecipe[0] == -2 ) )
+        else if ( ( playerRecipe[1] - correctRecipe[1] == 2 ) || ( playerRecipe[1] - correctRecipe[1] == -2 ) || ( playerRecipe[2] - correctRecipe[2] == 2 ) || ( playerRecipe[2] - correctRecipe[2] == -2 ) )
         {
             coins += 2;
             coinsEarned.text = "+2 Coins";
@@ -651,7 +651,7 @@ public class Copia_Script : MonoBehaviour
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[2];
         }
-        else if ( ( playerRecipe[0] - correctRecipe[0] == 3 ) || ( playerRecipe[0] - correctRecipe[0] == -3 ) )
+        else if ( ( playerRecipe[1] - correctRecipe[1] == 3 ) || ( playerRecipe[1] - correctRecipe[1] == -3 ) || ( playerRecipe[2] - correctRecipe[2] == 3 ) || ( playerRecipe[2] - correctRecipe[2] == -3 ))
         {
             coins += 1;
             coinsEarned.text = "+1 Coins";
