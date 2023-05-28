@@ -39,7 +39,7 @@ public class Copia_Script : MonoBehaviour
 
     //Request
     [SerializeField] public TMP_Text recipeRequestText;
-    [SerializeField] [TextArea(3,5)] public string[] recipeRequestDialogue; 
+    [SerializeField] [TextArea(2,5)] public string[] recipeRequestDialogue; 
     [SerializeField] public Image clientPortrait;
     [SerializeField] public Sprite[] clientPortraitSprites;
 
@@ -107,11 +107,14 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Sprite yourMoldFaceHealthy;
     [SerializeField] public Sprite yourMoldFacePoison;
 
-    //You lose screens
+    //Result screens
+    [SerializeField] public TMP_Text sentMoldCommentText;
+    [SerializeField] [TextArea(3,5)] public string[] sentMoldCommentDialogue; //0=0 coins recieved
     [SerializeField] public TMP_Text youLoseText;
     public int typeOfDeath; //0=no money
     [SerializeField] [TextArea(1,5)] public string youWinDialogue;
-    [SerializeField] public TMP_Text youWinText; 
+    [SerializeField] public TMP_Text youWinText;
+
 
     #endregion
     
@@ -224,16 +227,19 @@ public class Copia_Script : MonoBehaviour
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[3];
+            clientPortrait.sprite = clientPortraitSprites[3];
         }
-        else if (correctRecipe[2] >= 4 && correctRecipe[2] < 7 && isPositive == false)
+        else if (correctRecipe[2] >= 4 && correctRecipe[2] < 7 && isPositive == true)
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[4];
+            clientPortrait.sprite = clientPortraitSprites[4];
         }
         else if (correctRecipe[2] < 4 && isPositive == true)
         {
             recipeRequestText.text = "";
             recipeRequestText.text = recipeRequestDialogue[5];
+            clientPortrait.sprite = clientPortraitSprites[5];
         }
         
     }
@@ -612,40 +618,49 @@ public class Copia_Script : MonoBehaviour
             playerScoreText[m].text = playerRecipe[m].ToString();
         }
         
-        //
         //Coins Score
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
             coins += 5;
             coinsEarned.text = "+5 Coins";
-            //Text for win
+
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[4];
         }
         else if ( ( isPositive && ( playerRecipe[1] > 0 ) ) || ( !isPositive && ( playerRecipe[2] > 0 ) ) )
         {
             coins += 0;
             coinsEarned.text = "+0 Coins";
-            // text for having completely failed 
+            
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[0];
         }
         else if ( ( playerRecipe[0] - correctRecipe[0] == 1 ) || ( playerRecipe[0] - correctRecipe[0] == -1 ) )
         {
             coins += 3;
             coinsEarned.text = "+3 Coins";
-            // text for almost getting it
+            
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[3];
         }
         else if ( ( playerRecipe[0] - correctRecipe[0] == 2 ) || ( playerRecipe[0] - correctRecipe[0] == -2 ) )
         {
             coins += 2;
             coinsEarned.text = "+2 Coins";
-            // text for getting near
+            
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[2];
         }
         else if ( ( playerRecipe[0] - correctRecipe[0] == 3 ) || ( playerRecipe[0] - correctRecipe[0] == -3 ) )
         {
             coins += 1;
             coinsEarned.text = "+1 Coins";
-            // text for barely getting it
+            
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[1];
         }
 
-        //RefreshCoinsCounters();
+        RefreshCoinsCounters();
         
         /*// Perfect Recipe
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
@@ -697,7 +712,9 @@ public class Copia_Script : MonoBehaviour
 
         if (coins >= 30)
         {
+            NewDayCanvas.SetActive(false);
             winCanvas.SetActive(true);
+
             youWinText.text = youWinDialogue;
         }
     }
