@@ -31,22 +31,6 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private int ratCost = 1;
     [SerializeField] public TMP_Text coinsEarned;
     
-    //Test Dialogues
-    [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] ratDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] catDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] dogDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] youDialogue;
-
-    //Buttons
-    [SerializeField] public Button ratTestButton;
-    [SerializeField] public Button catTestButton;
-    [SerializeField] public Button dogTestButton;
-    [SerializeField] public Button youTestButton;
-    [SerializeField] public Button passNightButton;
-    [SerializeField] public Button moldMadeOkButton;
-    [SerializeField] public Button buyRatButton;
-
     // Correct Recipe
     [SerializeField] private int[] correctRecipe = new int[numIngredients];
     [SerializeField] private bool isPositive;   // true means that is a positive recipe, false means that it's negative
@@ -73,6 +57,23 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject moldMadeCanvas;
+
+    //Buttons
+    [SerializeField] public Button ratTestButton;
+    [SerializeField] public Button catTestButton;
+    [SerializeField] public Button dogTestButton;
+    [SerializeField] public Button youTestButton;
+    [SerializeField] public Button passNightButton;
+    [SerializeField] public Button moldMadeOkButton;
+    [SerializeField] public Button buyRatButton;
+
+    //Test Dialogues
+    [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] ratDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] catDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] dogDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] youDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] youLoseDialogue;
 
     // Test subjects details
     [SerializeField] public int animalsLeft = 4;
@@ -105,6 +106,12 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Image yourMoldFace;
     [SerializeField] public Sprite yourMoldFaceHealthy;
     [SerializeField] public Sprite yourMoldFacePoison;
+
+    //You lose screens
+    [SerializeField] public TMP_Text youLoseText;
+    public int typeOfDeath; //0=no money
+    [SerializeField] [TextArea(1,5)] public string youWinDialogue;
+    [SerializeField] public TMP_Text youWinText; 
 
     #endregion
     
@@ -294,6 +301,9 @@ public class Copia_Script : MonoBehaviour
         // Disattiva bottone notte
         passNightButton.interactable = false;
 
+        //Resetta test textbox
+        TestCommentText.text = "";
+        
         //Se mostra opzioni di test
         if ( (animalsLeft < 4) && (ratCost <= coins) )
         {
@@ -524,26 +534,30 @@ public class Copia_Script : MonoBehaviour
            //same, if you
             if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[0];
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[0];*/
+                typeOfDeath = 1;
                 YouDie();
             }
             else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
             {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[1];
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[1];*/
+                typeOfDeath = 2;
                 YouDie();
             }
             else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
             {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[2];
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[2];*/
+                typeOfDeath = 3;
                 YouDie();
             }
             else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
             {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[3];
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[3];*/
+                typeOfDeath = 4;
                 YouDie();
             }
             else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
@@ -684,6 +698,7 @@ public class Copia_Script : MonoBehaviour
         if (coins >= 30)
         {
             winCanvas.SetActive(true);
+            youWinText.text = youWinDialogue;
         }
     }
 
@@ -692,6 +707,32 @@ public class Copia_Script : MonoBehaviour
         NewDayCanvas.SetActive(false);
         requestCanvas.SetActive(false);
         loseCanvas.SetActive(true);
+
+        if (typeOfDeath == 0)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[0];
+        }
+        else if (typeOfDeath == 1)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[1];
+        }
+        else if (typeOfDeath == 2)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[2];
+        }
+        else if (typeOfDeath == 3)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[3];
+        }
+        else if (typeOfDeath == 4)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[4];
+        }
     }
 
     public void PlaySoundEffect(string testSubjectStringForSound)

@@ -2264,6 +2264,51 @@ MonoBehaviour:
   buyRatGameObject: {fileID: 1380684749}
   ratCost: 1
   coinsEarned: {fileID: 1701487463}
+  correctRecipe: 000000000000000000000000
+  isPositive: 0
+  CorrectRecipeScoreText:
+  - {fileID: 1360587164}
+  - {fileID: 1285943509}
+  - {fileID: 1126472630}
+  recipeRequestText: {fileID: 1971297658}
+  recipeRequestDialogue:
+  - "Voglio ammazzare mio marito, ma lentamente, cos\xEC da non avere prove contro
+    di me. "
+  - Voglio sterminare le piante nel mio giardino, ho bisogno di qualcosa di forte,
+    ma non troppo.
+  - "Voglio mettere a dormire mio figlio, non ne posso pi\xF9.\r"
+  - "Vorrei che mi ricrescesse la gamba\u2026\r\n"
+  - "Ho bisogno di una quinta per il mio lavoro\u2026\r"
+  - "Voglio farmi tornare i capelli....\r"
+  clientPortrait: {fileID: 2089606877}
+  clientPortraitSprites:
+  - {fileID: 21300000, guid: b346e30588c4824438bfa085bdd67360, type: 3}
+  - {fileID: 21300000, guid: f73260e2a474e774995db447a1ca11b2, type: 3}
+  - {fileID: 21300000, guid: 80fc4df32db08ab45887681fd9aadda9, type: 3}
+  playerRecipe: 000000000000000000000000
+  playerRecipeText:
+  - {fileID: 39593273}
+  - {fileID: 899325559}
+  - {fileID: 1525290943}
+  playerScoreText:
+  - {fileID: 39593273}
+  - {fileID: 899325559}
+  - {fileID: 1525290943}
+  IngredientMixingCanvas: {fileID: 1260316300}
+  NewDayCanvas: {fileID: 2145109734}
+  ScoreCanvas: {fileID: 207150092}
+  TestResultTextBox: {fileID: 583839942}
+  requestCanvas: {fileID: 825966886}
+  winCanvas: {fileID: 1054651498}
+  loseCanvas: {fileID: 1844212702}
+  moldMadeCanvas: {fileID: 2045301678}
+  ratTestButton: {fileID: 1837161821}
+  catTestButton: {fileID: 1699292047}
+  dogTestButton: {fileID: 1871676749}
+  youTestButton: {fileID: 626685238}
+  passNightButton: {fileID: 1495590964}
+  moldMadeOkButton: {fileID: 713732884}
+  buyRatButton: {fileID: 1380684752}
   failedTestDialogue: The mold didn't grow... you must've done something wrong (as
     usual).
   ratDialogue:
@@ -2331,51 +2376,12 @@ MonoBehaviour:
   - "\u201CYou tasted the good-looking mold. You felt it. Your body sprouting with
     health and energy, your receding hairline starting to grow back, the love of
     your parents coming back. Maybe you are not a failure after all. Good job champ!\u201D"
-  ratTestButton: {fileID: 1837161821}
-  catTestButton: {fileID: 1699292047}
-  dogTestButton: {fileID: 1871676749}
-  youTestButton: {fileID: 626685238}
-  passNightButton: {fileID: 1495590964}
-  moldMadeOkButton: {fileID: 713732884}
-  buyRatButton: {fileID: 1380684752}
-  correctRecipe: 000000000000000000000000
-  isPositive: 0
-  CorrectRecipeScoreText:
-  - {fileID: 1360587164}
-  - {fileID: 1285943509}
-  - {fileID: 1126472630}
-  recipeRequestText: {fileID: 1971297658}
-  recipeRequestDialogue:
-  - "Voglio ammazzare mio marito, ma lentamente, cos\xEC da non avere prove contro
-    di me. "
-  - Voglio sterminare le piante nel mio giardino, ho bisogno di qualcosa di forte,
-    ma non troppo.
-  - "Voglio mettere a dormire mio figlio, non ne posso pi\xF9.\r"
-  - "Vorrei che mi ricrescesse la gamba\u2026\r\n"
-  - "Ho bisogno di una quinta per il mio lavoro\u2026\r"
-  - "Voglio farmi tornare i capelli....\r"
-  clientPortrait: {fileID: 2089606877}
-  clientPortraitSprites:
-  - {fileID: 21300000, guid: b346e30588c4824438bfa085bdd67360, type: 3}
-  - {fileID: 21300000, guid: f73260e2a474e774995db447a1ca11b2, type: 3}
-  - {fileID: 21300000, guid: 80fc4df32db08ab45887681fd9aadda9, type: 3}
-  playerRecipe: 000000000000000000000000
-  playerRecipeText:
-  - {fileID: 39593273}
-  - {fileID: 899325559}
-  - {fileID: 1525290943}
-  playerScoreText:
-  - {fileID: 39593273}
-  - {fileID: 899325559}
-  - {fileID: 1525290943}
-  IngredientMixingCanvas: {fileID: 1260316300}
-  NewDayCanvas: {fileID: 2145109734}
-  ScoreCanvas: {fileID: 207150092}
-  TestResultTextBox: {fileID: 583839942}
-  requestCanvas: {fileID: 825966886}
-  winCanvas: {fileID: 1054651498}
-  loseCanvas: {fileID: 1844212702}
-  moldMadeCanvas: {fileID: 2045301678}
+  youLoseDialogue:
+  - no morey monei :(
+  - 1
+  - 2
+  - 3
+  - 4
   animalsLeft: 4
   ratBought: 0
   TestCommentText: {fileID: 1396936899}
@@ -2398,6 +2404,10 @@ MonoBehaviour:
   yourMoldFace: {fileID: 1349950953}
   yourMoldFaceHealthy: {fileID: 21300000, guid: 02c09844a178ae942b1dcf6c3be301f3, type: 3}
   yourMoldFacePoison: {fileID: 21300000, guid: ba021dbb74119784e9786b2138ce619d, type: 3}
+  youLoseText: {fileID: 1850335356}
+  typeOfDeath: 0
+  youWinDialogue: you win woooo
+  youWinText: {fileID: 1691985412}
 --- !u!1 &453135180
 GameObject:
   m_ObjectHideFlags: 0
