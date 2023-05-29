@@ -984,4 +984,18 @@ public class Copia_Script : MonoBehaviour
         //requestCanvas.SetActive(true);
         //NewDayCanvas.SetActive(true);
     }
+
+    public void Update()
+    {
+        if (coins == 0 && cupFilledTotal < 10)
+        {
+            requestCanvas.SetActive(false);
+            IngredientMixingCanvas.SetActive(false);
+            loseCanvas.SetActive(true);
+
+            typeOfDeath = 0;
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[0];
+        }
+    }
 }
