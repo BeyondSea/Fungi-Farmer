@@ -118,6 +118,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] [TextArea(3,5)] public string[] sentMoldCommentDialogue; //0=0 coins recieved
     [SerializeField] public TMP_Text youLoseText;
     public int typeOfDeath; //0=no money
+    [SerializeField] public TMP_Text gameOverText;
     [SerializeField] [TextArea(1,5)] public string youWinDialogue;
     [SerializeField] public TMP_Text youWinText;
 
@@ -405,7 +406,7 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
-            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            else if (playerRecipe[1] < 4 && playerRecipe[1] > 0 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
@@ -420,10 +421,15 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
-            else if (playerRecipe[2] < 4  && playerRecipe[1] == 0)
+            else if (playerRecipe[2] < 4 && playerRecipe[2] > 0 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
+            }
+            else if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[6];
             }
         }
 
@@ -446,7 +452,7 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
-            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            else if (playerRecipe[1] < 4 && playerRecipe[1] > 0 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
@@ -461,12 +467,16 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
-            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            else if (playerRecipe[2] < 4 && playerRecipe[2] > 0 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
             }
-            
+            else if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = ratDialogue[6];
+            }
         }
 
         else if (animalsLeft == 3)
@@ -487,7 +497,7 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[1];
             }
-            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            else if (playerRecipe[1] < 4 && playerRecipe[1] > 0 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[2];
@@ -502,10 +512,15 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[4];
             }
-            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            else if (playerRecipe[2] < 4 && playerRecipe[2] > 0 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[5];
+            }
+            else if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = catDialogue[6];
             }
         }
 
@@ -527,7 +542,7 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[1];
             }
-            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            else if (playerRecipe[1] < 4 && playerRecipe[1] > 0 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[2];
@@ -542,10 +557,15 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[4];
             }
-            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            else if (playerRecipe[2] < 4 && playerRecipe[2] > 0 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[5];
+            }
+            else if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[6];
             }
         }
 
@@ -559,8 +579,6 @@ public class Copia_Script : MonoBehaviour
            //same, if you
             if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
             {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[0];*/
                 typeOfDeath = 1;
                 YouDie();
             }
@@ -569,10 +587,8 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = youDialogue[1];
             }
-            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            else if (playerRecipe[1] < 4 && playerRecipe[1] > 0 && playerRecipe[2] == 0)
             {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[2];*/
                 typeOfDeath = 2;
                 YouDie();
             }
@@ -583,16 +599,17 @@ public class Copia_Script : MonoBehaviour
             }
             else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
             {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[4];*/
                 typeOfDeath = 3;
                 YouDie();
             }
-            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            else if (playerRecipe[2] < 4 && playerRecipe[2] > 0 && playerRecipe[1] == 0)
             {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[5];*/
                 typeOfDeath = 4;
+                YouDie();
+            }
+            else if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
+            {
+                typeOfDeath = 5;
                 YouDie();
             }
         }
@@ -630,7 +647,7 @@ public class Copia_Script : MonoBehaviour
             }*/
         
         //Controllo accuratezza per Hints
-        if (playerRecipe[1] < 0 && playerRecipe[2] < 0)
+        if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
         {
             testHintText.text = "";
             testHintText.text = testHintDialogue[0];
@@ -832,6 +849,13 @@ public class Copia_Script : MonoBehaviour
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[4];
+
+            gameOverText.text = "GAME OVER...?";
+        }
+        else if (typeOfDeath == 5)
+        {
+            youLoseText.text = "";
+            youLoseText.text = youLoseDialogue[5];
         }
     }
 

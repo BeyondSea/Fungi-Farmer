@@ -1171,7 +1171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &207150093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2882,6 +2882,7 @@ MonoBehaviour:
     reached the size of the carrier, so I had to free him.\r"
   - "The lab rat tried the mold and its fur started growing extremely fast, so fast
     it suffocated in its own cage. Other than that it didn't do much\u2026"
+  - What could it do, it's just water. Well it did enough, the rat drowned in it.
   catDialogue:
   - The little cat ate the mold savoring every bite. Then it looked at me for a moment,
     and stood there frozen. Then it collapsed to the ground dead.
@@ -2899,6 +2900,8 @@ MonoBehaviour:
   - The stray cat, after tasting the mold, started shedding fur and growing it back
     rapidly, until it became so fluffy it didn't even look like a cat. It ran away.
     I don't think It will come back.
+  - "I guess I can give the water to the cat, it might help. F*ck I spilled it and
+    the cat ran away\u2026"
   dogDialogue:
   - My dog ate the mold, and I suddenly felt guilty. He looked at me one last time
     before making an awful sound, a whine so acute it could have broken a window.
@@ -2922,6 +2925,8 @@ MonoBehaviour:
     my dog really happy. His fur became more voluminous and shone through the room.
     I suddenly felt a sense of guilt, I can never make him happy can i? I\u2019ll
     find someone who will take better care of you\u2026"
+  - "Come here little buddy to take a drink! Be careful- He broke his leg jumping
+    down the couch. Trip to the vet, they\u2019ll keep him for a while."
   youDialogue:
   - I tasted the mold.  Suddenly I felt myself gasping for air, I threw myself on
     to the ground just to lose my senses after a moment. They found my body only
@@ -2948,6 +2953,8 @@ MonoBehaviour:
     I looked at myself in the mirror and\u2026 I look good? I'm super good looking
     now\u2026 Screw my parents, screw this awful job, screw everything! I'm becoming
     a fashion model! Or a hair model. I don't care, anything but this! "
+  - "What could go wrong with drinking water? Well apparently a lot. I tripped in
+    a puddle of said water and hurt my head on the counter. I\u2019m dead."
   youLoseDialogue:
   - "You have no more money! Time to give up everything and go back to the wild.\r"
   - I tasted the mold.  Suddenly I felt myself gasping for air, I threw myself on
@@ -2966,6 +2973,8 @@ MonoBehaviour:
     I looked at myself in the mirror and\u2026 I look good? I'm super good looking
     now\u2026 Screw my parents, screw this awful job, screw everything! I'm becoming
     a fashion model! Or a hair model. I don't care, anything but this! "
+  - "What could go wrong with drinking water? Well apparently a lot. I tripped in
+    a puddle of said water and hurt my head on the counter. I\u2019m dead."
   testHintDialogue:
   - This is literally just water. What was I thinking?
   - "We\u2019re far from it."
@@ -3006,6 +3015,7 @@ MonoBehaviour:
 '
   youLoseText: {fileID: 1850335356}
   typeOfDeath: 0
+  gameOverText: {fileID: 150073792}
   youWinDialogue: "With these 30 coins\u2026 With these 30 coins I can buy a new
     identity and be free, free of this, free of my parents!"
   youWinText: {fileID: 1691985412}
@@ -6435,7 +6445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &825966887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9848,7 +9858,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1260316301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15071,7 +15081,7 @@ GameObject:
   - component: {fileID: 1813658480}
   - component: {fileID: 1813658479}
   m_Layer: 5
-  m_Name: You Win
+  m_Name: You Win Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
