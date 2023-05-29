@@ -57,6 +57,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private GameObject winCanvas;
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject moldMadeCanvas;
+    [SerializeField] private GameObject testCommentsCanvas;
 
     //Buttons
     [SerializeField] public Button ratTestButton;
@@ -66,6 +67,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Button passNightButton;
     [SerializeField] public Button moldMadeOkButton;
     [SerializeField] public Button buyRatButton;
+    [SerializeField] public Button backToMoldActions;
 
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
@@ -74,11 +76,13 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] [TextArea(3,5)] public string[] dogDialogue;
     [SerializeField] [TextArea(3,5)] public string[] youDialogue;
     [SerializeField] [TextArea(3,5)] public string[] youLoseDialogue;
+    [SerializeField] [TextArea(3,5)] public string[] testHintDialogue;
 
     // Test subjects details
     [SerializeField] public int animalsLeft = 4;
     [SerializeField] public bool ratBought = false;
     [SerializeField] private TMP_Text TestCommentText;
+    [SerializeField] public TMP_Text testHintText;
 
     //Test Subjects Images
     [SerializeField] public Image ratImage;
@@ -361,6 +365,11 @@ public class Copia_Script : MonoBehaviour
 
     public void TestResult()
     {
+        //Canvases
+        //NewDayCanvas.SetActive(false);
+        //requestCanvas.SetActive(false);
+        testCommentsCanvas.SetActive(true);
+
         buyRatButton.interactable = false;
 
         // ricetta mista
@@ -869,5 +878,12 @@ public class Copia_Script : MonoBehaviour
     public void ChangeBeakerSprite()
     {
         beakerImage.sprite = beakerSprites[cupFilledTotal];
+    }
+
+    public void BackToMoldActions()
+    {
+        testCommentsCanvas.SetActive(false);
+        requestCanvas.SetActive(true);
+        NewDayCanvas.SetActive(true);
     }
 }
