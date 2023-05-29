@@ -122,6 +122,9 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] [TextArea(1,5)] public string youWinDialogue;
     [SerializeField] public TMP_Text youWinText;
 
+    //Suffering Protagonist lol
+    [SerializeField] public Image dyingProtagImage;
+    [SerializeField] public Sprite[] dyingProtagSprites;
 
     #endregion
     
@@ -821,34 +824,46 @@ public class Copia_Script : MonoBehaviour
 
     public void YouDie()
     {
-        NewDayCanvas.SetActive(false);
-        requestCanvas.SetActive(false);
+        //NewDayCanvas.SetActive(false);
+        //requestCanvas.SetActive(false);
+        testCommentsCanvas.SetActive(false);
         loseCanvas.SetActive(true);
 
         if (typeOfDeath == 0)
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[0];
+
+            dyingProtagImage.sprite = dyingProtagSprites[0];
         }
         else if (typeOfDeath == 1)
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[1];
+
+            dyingProtagImage.sprite = dyingProtagSprites[1];
+
         }
         else if (typeOfDeath == 2)
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[2];
+
+            dyingProtagImage.sprite = dyingProtagSprites[2];
         }
         else if (typeOfDeath == 3)
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[3];
+
+            dyingProtagImage.sprite = dyingProtagSprites[3];
         }
         else if (typeOfDeath == 4)
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[4];
+
+            dyingProtagImage.sprite = dyingProtagSprites[4];
 
             gameOverText.text = "GAME OVER...?";
         }
@@ -856,6 +871,8 @@ public class Copia_Script : MonoBehaviour
         {
             youLoseText.text = "";
             youLoseText.text = youLoseDialogue[5];
+
+            dyingProtagImage.sprite = dyingProtagSprites[1];
         }
     }
 
