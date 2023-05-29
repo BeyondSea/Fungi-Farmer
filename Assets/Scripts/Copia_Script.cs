@@ -58,6 +58,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject moldMadeCanvas;
     [SerializeField] private GameObject testCommentsCanvas;
+    [SerializeField] private GameObject gameStart;
 
     //Buttons
     [SerializeField] public Button ratTestButton;
@@ -68,14 +69,15 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Button moldMadeOkButton;
     [SerializeField] public Button buyRatButton;
     [SerializeField] public Button backToMoldActions;
+    [SerializeField] public Button startGame;
 
     //Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
     [SerializeField] [TextArea(3,5)] public string[] ratDialogue;
     [SerializeField] [TextArea(3,5)] public string[] catDialogue;
     [SerializeField] [TextArea(3,5)] public string[] dogDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] youDialogue;
-    [SerializeField] [TextArea(3,5)] public string[] youLoseDialogue;
+    [SerializeField] [TextArea(3,6)] public string[] youDialogue;
+    [SerializeField] [TextArea(3,6)] public string[] youLoseDialogue;
     [SerializeField] [TextArea(3,5)] public string[] testHintDialogue;
 
     // Test subjects details
@@ -124,6 +126,7 @@ public class Copia_Script : MonoBehaviour
     
     void Start()
     {
+        gameStart.SetActive(true);
         GenerateRecipe();
         //GenerateRecipeDescription();
         RecipeRequest();
@@ -131,6 +134,13 @@ public class Copia_Script : MonoBehaviour
         passNightButton.interactable = false;
         RefreshCoinsCounters();
         // animalsBeforeBuying = animalsLeft;
+    }
+
+    public void StartGame()
+    {
+        gameStart.SetActive(false);
+        requestCanvas.SetActive(true);
+        IngredientMixingCanvas.SetActive(true);
     }
 
     // Presumo che sia necessario che le ricette abbiano sempre
@@ -385,32 +395,32 @@ public class Copia_Script : MonoBehaviour
             ratImage.sprite = emptyImage;
             ratBought = false;
             
-            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] >= 4 && playerRecipe[1] < 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] < 4  && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
@@ -426,32 +436,32 @@ public class Copia_Script : MonoBehaviour
             
             //If rat is left, and recipe has meat
             //then if rat is left, and recipe has vegs
-            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] >= 4 && playerRecipe[1] < 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = ratDialogue[5];
@@ -467,32 +477,32 @@ public class Copia_Script : MonoBehaviour
             catImage.sprite = emptyImage;
             
             //same, if cat
-            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[0];
             }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] >= 4 && playerRecipe[1] < 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[1];
             }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
+            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[2];
             }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 7 && playerRecipe[2] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[3];
             }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[4];
             }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
+            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[5];
@@ -507,7 +517,88 @@ public class Copia_Script : MonoBehaviour
             dogImage.sprite = emptyImage;
            
            //same, if dog
-            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
+            if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[0];
+            }
+            else if (playerRecipe[1] >= 4 && playerRecipe[1] < 7 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[1];
+            }
+            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[2];
+            }
+            else if (playerRecipe[2] >= 7 && playerRecipe[1] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[3];
+            }
+            else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[4];
+            }
+            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = dogDialogue[5];
+            }
+        }
+
+        else if (animalsLeft == 1)
+        {
+            animalsLeft--;
+
+            youTestButton.interactable = false;
+            youImage.sprite = emptyImage;
+
+           //same, if you
+            if (playerRecipe[1] >= 7 && playerRecipe[2] == 0)
+            {
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[0];*/
+                typeOfDeath = 1;
+                YouDie();
+            }
+            else if (playerRecipe[1] >= 4 && playerRecipe[1] < 7 && playerRecipe[2] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = youDialogue[1];
+            }
+            else if (playerRecipe[1] < 4 && playerRecipe[2] == 0)
+            {
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[2];*/
+                typeOfDeath = 2;
+                YouDie();
+            }
+            else if (playerRecipe[2] >= 7 && playerRecipe[1] == 0)
+            {
+                TestCommentText.text = "";
+                TestCommentText.text = youDialogue[3];
+            }
+            else if (playerRecipe[2] >= 4 && playerRecipe[2] < 7 && playerRecipe[1] == 0)
+            {
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[4];*/
+                typeOfDeath = 3;
+                YouDie();
+            }
+            else if (playerRecipe[2] < 4 && playerRecipe[1] == 0)
+            {
+                /*TestCommentText.text = "";
+                TestCommentText.text = youDialogue[5];*/
+                typeOfDeath = 4;
+                YouDie();
+            }
+        }
+        
+        //Per dopo
+            /*if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[0];
@@ -536,55 +627,38 @@ public class Copia_Script : MonoBehaviour
             {
                 TestCommentText.text = "";
                 TestCommentText.text = dogDialogue[5];
-            }
-        }
-
-        else if (animalsLeft == 1)
+            }*/
+        
+        //Controllo accuratezza per Hints
+        if (playerRecipe[1] < 0 && playerRecipe[2] < 0)
         {
-            animalsLeft--;
-
-            youTestButton.interactable = false;
-            youImage.sprite = emptyImage;
-
-           //same, if you
-            if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
-            {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[0];*/
-                typeOfDeath = 1;
-                YouDie();
-            }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
-            {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[1];*/
-                typeOfDeath = 2;
-                YouDie();
-            }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
-            {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[2];*/
-                typeOfDeath = 3;
-                YouDie();
-            }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
-            {
-                /*TestCommentText.text = "";
-                TestCommentText.text = youDialogue[3];*/
-                typeOfDeath = 4;
-                YouDie();
-            }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[4];
-            }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = youDialogue[5];
-            }
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[0];
+        }
+        else if (( isPositive && ( playerRecipe[1] > 0 )) || ( !isPositive && ( playerRecipe[2] > 0 )))
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[1];
+        }
+        else if (( playerRecipe[1] - correctRecipe[1] == 4 ) || ( playerRecipe[1] - correctRecipe[1] == -4 ) || ( playerRecipe[2] - correctRecipe[2] == 4 ) || ( playerRecipe[2] - correctRecipe[2] == -4 ))
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[2];
+        }
+        else if (( playerRecipe[1] - correctRecipe[1] == 2 ) || ( playerRecipe[1] - correctRecipe[1] == -2 ) || ( playerRecipe[2] - correctRecipe[2] == 2 ) || ( playerRecipe[2] - correctRecipe[2] == -2 ))
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[3];
+        }
+        else if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[4];
+        }
+        else
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[5];
         }
     }
 
@@ -634,7 +708,7 @@ public class Copia_Script : MonoBehaviour
             coinsEarned.text = "+5 Coins";
 
             sentMoldCommentText.text = "";
-            sentMoldCommentText.text = sentMoldCommentDialogue[4];
+            sentMoldCommentText.text = sentMoldCommentDialogue[3];
         }
         else if ( ( isPositive && ( playerRecipe[1] > 0 ) ) || ( !isPositive && ( playerRecipe[2] > 0 ) ) )
         {
@@ -650,14 +724,6 @@ public class Copia_Script : MonoBehaviour
             coinsEarned.text = "+3 Coins";
             
             sentMoldCommentText.text = "";
-            sentMoldCommentText.text = sentMoldCommentDialogue[3];
-        }
-        else if ( ( playerRecipe[1] - correctRecipe[1] == 2 ) || ( playerRecipe[1] - correctRecipe[1] == -2 ) || ( playerRecipe[2] - correctRecipe[2] == 2 ) || ( playerRecipe[2] - correctRecipe[2] == -2 ) )
-        {
-            coins += 2;
-            coinsEarned.text = "+2 Coins";
-            
-            sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[2];
         }
         else if ( ( playerRecipe[1] - correctRecipe[1] == 3 ) || ( playerRecipe[1] - correctRecipe[1] == -3 ) || ( playerRecipe[2] - correctRecipe[2] == 3 ) || ( playerRecipe[2] - correctRecipe[2] == -3 ))
@@ -667,6 +733,14 @@ public class Copia_Script : MonoBehaviour
             
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[1];
+        }
+        else
+        {
+            coins += 0;
+            coinsEarned.text = "+0 Coins";
+            
+            sentMoldCommentText.text = "";
+            sentMoldCommentText.text = sentMoldCommentDialogue[0];
         }
 
         RefreshCoinsCounters();
@@ -883,7 +957,7 @@ public class Copia_Script : MonoBehaviour
     public void BackToMoldActions()
     {
         testCommentsCanvas.SetActive(false);
-        requestCanvas.SetActive(true);
-        NewDayCanvas.SetActive(true);
+        //requestCanvas.SetActive(true);
+        //NewDayCanvas.SetActive(true);
     }
 }
