@@ -631,38 +631,6 @@ public class Copia_Script : MonoBehaviour
             }
         }
         
-        //Per dopo
-            /*if (playerRecipe[1] > correctRecipe[1] && isPositive == false)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[0];
-            }
-            else if (playerRecipe[1] < correctRecipe[1] && isPositive == false)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[1];
-            }
-            else if (playerRecipe[1] == correctRecipe[1] && isPositive == false)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[2];
-            }
-            else if (playerRecipe[2] > correctRecipe[2] && isPositive == true)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[3];
-            }
-            else if (playerRecipe[2] < correctRecipe[2] && isPositive == true)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[4];
-            }
-            else if (playerRecipe[2] == correctRecipe[2] && isPositive == true)
-            {
-                TestCommentText.text = "";
-                TestCommentText.text = dogDialogue[5];
-            }*/
-        
         //Controllo accuratezza per Hints
         if (playerRecipe[1] == 0 && playerRecipe[2] == 0)
         {
@@ -719,6 +687,8 @@ public class Copia_Script : MonoBehaviour
         // ritorna all'altro canvas
         NewDayCanvas.SetActive(false);
         IngredientMixingCanvas.SetActive(true);
+
+        CheckForLossNoMoney(IngredientMixingCanvas);
     }
 
     public void GiveToClient()
@@ -783,54 +753,6 @@ public class Copia_Script : MonoBehaviour
         }
 
         RefreshCoinsCounters();
-        
-        /*// Perfect Recipe
-        if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
-        {
-            coins += 5;
-            RefreshCoinsCounters();
-            ScoreCanvas.SetActive(true);
-        }
-        else
-        {
-            ScoreCanvas.SetActive(true);
-
-            // show correct recipe
-            for (int k=0; k<numIngredients; k++)
-            {
-                CorrectRecipeScoreText[k].text = correctRecipe[k].ToString();
-            }
-
-            // show player recipe
-            for (int m=0; m<numIngredients; m++)
-            {
-                playerScoreText[m].text = playerRecipe[m].ToString();
-            }
-
-            // Partial Score
-            if ( ( isPositive && ( playerRecipe[1] > 0 ) ) || ( !isPositive && ( playerRecipe[2] > 0 ) ) )
-            {
-                coins += 0;
-                // text for having completely failed 
-            }
-            else if ( ( playerRecipe[0] - correctRecipe[0] == 1 ) || ( playerRecipe[0] - correctRecipe[0] == -1 ) )
-            {
-                coins += 3;
-                // text for almost getting it
-            }
-            else if ( ( playerRecipe[0] - correctRecipe[0] == 2 ) || ( playerRecipe[0] - correctRecipe[0] == -2 ) )
-            {
-                coins += 2;
-                // text for getting near
-            }
-            else if ( ( playerRecipe[0] - correctRecipe[0] == 3 ) || ( playerRecipe[0] - correctRecipe[0] == -3 ) )
-            {
-                coins += 1;
-                // text for barely getting it
-            }
-
-            RefreshCoinsCounters();
-        }*/
 
         if (coins >= winAtCoins)
         {
@@ -841,6 +763,8 @@ public class Copia_Script : MonoBehaviour
 
             Music.clip = winMusic;
         }
+
+        CheckForLossNoMoney(ScoreCanvas);
     }
 
     public void YouDie()
@@ -1027,12 +951,11 @@ public class Copia_Script : MonoBehaviour
         //NewDayCanvas.SetActive(true);
     }
 
-    public void Update()
+    public void CheckForLossNoMoney(GameObject currentCanvas)
     {
-        if (coins == 0 && cupFilledTotal < 10)
+        if ( coins == 0 )
         {
-            requestCanvas.SetActive(false);
-            IngredientMixingCanvas.SetActive(false);
+            currentCanvas.SetActive(false);
             loseCanvas.SetActive(true);
 
             typeOfDeath = 0;
