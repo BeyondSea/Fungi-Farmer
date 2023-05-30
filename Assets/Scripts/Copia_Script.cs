@@ -26,6 +26,7 @@ public class Copia_Script : MonoBehaviour
 
     // Coins
     [SerializeField] private int coins = 30;
+    [SerializeField] private int winAtCoins = 50;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
     [SerializeField] private GameObject buyRatGameObject;
     [SerializeField] private int ratCost = 1;
@@ -37,7 +38,7 @@ public class Copia_Script : MonoBehaviour
     //[SerializeField] private TMP_Text requestDescr;
     [SerializeField] private TMP_Text[] CorrectRecipeScoreText = new TMP_Text[numIngredients];
 
-    //Request
+    // Request
     [SerializeField] public TMP_Text recipeRequestText;
     [SerializeField] [TextArea(2,5)] public string[] recipeRequestDialogue; 
     [SerializeField] public Image clientPortrait;
@@ -60,7 +61,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private GameObject testCommentsCanvas;
     [SerializeField] private GameObject gameStart;
 
-    //Buttons
+    // Buttons
     [SerializeField] public Button ratTestButton;
     [SerializeField] public Button catTestButton;
     [SerializeField] public Button dogTestButton;
@@ -71,7 +72,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Button backToMoldActions;
     [SerializeField] public Button startGame;
 
-    //Test Dialogues
+    // Test Dialogues
     [SerializeField] [TextArea(1,5)] public string failedTestDialogue;
     [SerializeField] [TextArea(3,5)] public string[] ratDialogue;
     [SerializeField] [TextArea(3,5)] public string[] catDialogue;
@@ -86,7 +87,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private TMP_Text TestCommentText;
     [SerializeField] public TMP_Text testHintText;
 
-    //Test Subjects Images
+    // Test Subjects Images
     [SerializeField] public Image ratImage;
     [SerializeField] public Image catImage;
     [SerializeField] public Image dogImage;
@@ -94,27 +95,27 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Sprite emptyImage;
     [SerializeField] public Sprite originalRatImage;
 
-    //Test Subjects Options
+    // Test Subjects Options
     [SerializeField] public GameObject ratOption;
     [SerializeField] public GameObject catOption;
     [SerializeField] public GameObject dogOption;
     [SerializeField] public GameObject youOption; 
 
-    //Sound effects
+    // Sound effects
     [SerializeField] public AudioSource ratAudio;
     [SerializeField] public AudioSource catAudio;
     [SerializeField] public AudioSource dogAudio;
     [SerializeField] public AudioSource youAudio;
     [SerializeField] public AudioSource buySound;
 
-    //Created mold
+    // Created mold
     [SerializeField] public Image moldMadeImage;
     [SerializeField] public Image yourMoldImage;
     [SerializeField] public Image yourMoldFace;
     [SerializeField] public Sprite yourMoldFaceHealthy;
     [SerializeField] public Sprite yourMoldFacePoison;
 
-    //Result screens
+    // Result screens
     [SerializeField] public TMP_Text sentMoldCommentText;
     [SerializeField] [TextArea(3,5)] public string[] sentMoldCommentDialogue; //0=0 coins recieved
     [SerializeField] public TMP_Text youLoseText;
@@ -123,22 +124,25 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] [TextArea(1,5)] public string youWinDialogue;
     [SerializeField] public TMP_Text youWinText;
 
-    //Suffering Protagonist lol
+    // Suffering Protagonist lol
     [SerializeField] public Image dyingProtagImage;
     [SerializeField] public Sprite[] dyingProtagSprites;
 
-    //Musica
-
+    // Musica
     [SerializeField] private AudioSource Music;
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip loseMusic;
     [SerializeField] private AudioClip winMusic;
+
+    // Start screen
+    [SerializeField] public TMP_Text goalText;
 
     #endregion
     
     void Start()
     {
         gameStart.SetActive(true);
+        goalText.text = "<line-height=25>If only I could get to " + winAtCoins + " coins, I could finally be free from this torture…";
         GenerateRecipe();
         //GenerateRecipeDescription();
         RecipeRequest();
@@ -828,7 +832,7 @@ public class Copia_Script : MonoBehaviour
             RefreshCoinsCounters();
         }*/
 
-        if (coins >= 50)
+        if (coins >= winAtCoins)
         {
             NewDayCanvas.SetActive(false);
             winCanvas.SetActive(true);

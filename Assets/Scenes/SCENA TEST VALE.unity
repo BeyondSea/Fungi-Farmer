@@ -2805,6 +2805,7 @@ MonoBehaviour:
   cupFilledTotal: 0
   cupFilledText: {fileID: 1784728359}
   coins: 30
+  winAtCoins: 50
   coinsCounter:
   - {fileID: 1846155812}
   - {fileID: 222851441}
@@ -3030,6 +3031,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 8300000, guid: 6990d23fc544892488a22dacd7841b86, type: 3}
   loseMusic: {fileID: 8300000, guid: b84c75654fa9649409ec5d8f147ebfcf, type: 3}
   winMusic: {fileID: 8300000, guid: af39bc2429c4087428235e4abb615713, type: 3}
+  goalText: {fileID: 1451698094}
 --- !u!1 &453135180
 GameObject:
   m_ObjectHideFlags: 0
@@ -11570,7 +11572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1380684750
 RectTransform:
   m_ObjectHideFlags: 0
