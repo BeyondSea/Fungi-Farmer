@@ -510,7 +510,7 @@ public class Copia_Script : MonoBehaviour
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[2];
             }
-            else if (playerRecipe[2] >= 7 && playerRecipe[2] == 0)
+            else if (playerRecipe[2] >= 7 && playerRecipe[1] == 0)
             {
                 TestCommentText.text = "";
                 TestCommentText.text = catDialogue[3];
