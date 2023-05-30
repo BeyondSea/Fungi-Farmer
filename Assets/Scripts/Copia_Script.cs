@@ -105,6 +105,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public AudioSource catAudio;
     [SerializeField] public AudioSource dogAudio;
     [SerializeField] public AudioSource youAudio;
+    [SerializeField] public AudioSource buySound;
 
     //Created mold
     [SerializeField] public Image moldMadeImage;
@@ -279,6 +280,8 @@ public class Copia_Script : MonoBehaviour
                 coins -= cost;
                 playerRecipe[ingredientIndex]++;
                 cupFilledTotal++;
+
+                buySound.Play();
 
                 playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
                 cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;
@@ -985,6 +988,8 @@ public class Copia_Script : MonoBehaviour
         buyRatButton.interactable = false;
         coins -= ratCost;
         RefreshCoinsCounters();
+
+        buySound.Play();
 
         ratTestButton.interactable = true;
         ratImage.sprite = originalRatImage;
