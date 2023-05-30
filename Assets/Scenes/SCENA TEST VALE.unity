@@ -2899,6 +2899,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b5f63cf1518621f4f88fd24828ab43b5, type: 3}
   backgroundMusic: {fileID: 1956084045}
   loseMusic: {fileID: 1844212707}
+  winMusic: {fileID: 1054651503}
 --- !u!1 &453135180
 GameObject:
   m_ObjectHideFlags: 0

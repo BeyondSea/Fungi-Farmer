@@ -129,6 +129,7 @@ public class Copia_Script : MonoBehaviour
     //Musica
     [SerializeField] public AudioSource backgroundMusic;
     [SerializeField] public AudioSource loseMusic;
+    [SerializeField] public AudioSource winMusic;
 
     #endregion
     
@@ -823,6 +824,8 @@ public class Copia_Script : MonoBehaviour
             winCanvas.SetActive(true);
 
             youWinText.text = youWinDialogue;
+
+            backgroundMusic.mute = !backgroundMusic.mute;
         }
     }
 
