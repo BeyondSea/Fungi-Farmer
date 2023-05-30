@@ -126,6 +126,10 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Image dyingProtagImage;
     [SerializeField] public Sprite[] dyingProtagSprites;
 
+    //Musica
+    [SerializeField] public AudioSource backgroundMusic;
+    [SerializeField] public AudioSource loseMusic;
+
     #endregion
     
     void Start()
@@ -828,6 +832,8 @@ public class Copia_Script : MonoBehaviour
         //requestCanvas.SetActive(false);
         testCommentsCanvas.SetActive(false);
         loseCanvas.SetActive(true);
+
+        backgroundMusic.mute = !backgroundMusic.mute;
 
         if (typeOfDeath == 0)
         {
