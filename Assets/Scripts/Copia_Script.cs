@@ -25,7 +25,7 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] private TMP_Text cupFilledText;
 
     // Coins
-    [SerializeField] private int coins = 20;
+    [SerializeField] private int coins = 30;
     [SerializeField] private TMP_Text[] coinsCounter = new TMP_Text[3];
     [SerializeField] private GameObject buyRatGameObject;
     [SerializeField] private int ratCost = 1;
@@ -667,12 +667,17 @@ public class Copia_Script : MonoBehaviour
             testHintText.text = "";
             testHintText.text = testHintDialogue[1];
         }
-        else if (( playerRecipe[1] - correctRecipe[1] == 4 ) || ( playerRecipe[1] - correctRecipe[1] == -4 ) || ( playerRecipe[2] - correctRecipe[2] == 4 ) || ( playerRecipe[2] - correctRecipe[2] == -4 ))
+        else if (( playerRecipe[1] - correctRecipe[1] == 3 ) || ( playerRecipe[1] - correctRecipe[1] == -3 ) || ( playerRecipe[2] - correctRecipe[2] == 3 ) || ( playerRecipe[2] - correctRecipe[2] == -3 ))
         {
             testHintText.text = "";
             testHintText.text = testHintDialogue[2];
         }
         else if (( playerRecipe[1] - correctRecipe[1] == 2 ) || ( playerRecipe[1] - correctRecipe[1] == -2 ) || ( playerRecipe[2] - correctRecipe[2] == 2 ) || ( playerRecipe[2] - correctRecipe[2] == -2 ))
+        {
+            testHintText.text = "";
+            testHintText.text = testHintDialogue[3];
+        }
+        else if (( playerRecipe[1] - correctRecipe[1] == 1 ) || ( playerRecipe[1] - correctRecipe[1] == -1 ) || ( playerRecipe[2] - correctRecipe[2] == 1 ) || ( playerRecipe[2] - correctRecipe[2] == -1 ))
         {
             testHintText.text = "";
             testHintText.text = testHintDialogue[3];
@@ -731,8 +736,8 @@ public class Copia_Script : MonoBehaviour
         //Coins Score
         if (playerRecipe[0] == correctRecipe[0] && playerRecipe[1] == correctRecipe[1] && playerRecipe[2] == correctRecipe[2])
         {
-            coins += 5;
-            coinsEarned.text = "+5 Coins";
+            coins += 20;
+            coinsEarned.text = "+20 Coins";
 
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[3];
@@ -747,24 +752,24 @@ public class Copia_Script : MonoBehaviour
         }
         else if ( ( playerRecipe[1] - correctRecipe[1] == 1 ) || ( playerRecipe[1] - correctRecipe[1] == -1 ) || ( playerRecipe[2] - correctRecipe[2] == 1 ) || ( playerRecipe[2] - correctRecipe[2] == -1 ) )
         {
-            coins += 3;
-            coinsEarned.text = "+3 Coins";
+            coins += 18;
+            coinsEarned.text = "+18 Coins";
             
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[2];
         }
-        else if ( ( playerRecipe[1] - correctRecipe[1] == 3 ) || ( playerRecipe[1] - correctRecipe[1] == -3 ) || ( playerRecipe[2] - correctRecipe[2] == 3 ) || ( playerRecipe[2] - correctRecipe[2] == -3 ))
+        else if ( ( playerRecipe[1] - correctRecipe[1] == 2 ) || ( playerRecipe[1] - correctRecipe[1] == -2 ) || ( playerRecipe[2] - correctRecipe[2] == 2 ) || ( playerRecipe[2] - correctRecipe[2] == -2 ))
         {
-            coins += 1;
-            coinsEarned.text = "+1 Coins";
+            coins += 18;
+            coinsEarned.text = "+18 Coins";
             
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[1];
         }
         else
         {
-            coins += 0;
-            coinsEarned.text = "+0 Coins";
+            coins += 10;
+            coinsEarned.text = "+10 Coins";
             
             sentMoldCommentText.text = "";
             sentMoldCommentText.text = sentMoldCommentDialogue[0];
@@ -820,7 +825,7 @@ public class Copia_Script : MonoBehaviour
             RefreshCoinsCounters();
         }*/
 
-        if (coins >= 30)
+        if (coins >= 50)
         {
             NewDayCanvas.SetActive(false);
             winCanvas.SetActive(true);
