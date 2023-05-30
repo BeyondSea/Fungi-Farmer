@@ -127,9 +127,11 @@ public class Copia_Script : MonoBehaviour
     [SerializeField] public Sprite[] dyingProtagSprites;
 
     //Musica
-    [SerializeField] public AudioSource backgroundMusic;
-    [SerializeField] public AudioSource loseMusic;
-    [SerializeField] public AudioSource winMusic;
+
+    [SerializeField] private AudioSource Music;
+    [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip loseMusic;
+    [SerializeField] private AudioClip winMusic;
 
     #endregion
     
@@ -825,7 +827,7 @@ public class Copia_Script : MonoBehaviour
 
             youWinText.text = youWinDialogue;
 
-            backgroundMusic.mute = !backgroundMusic.mute;
+            Music.clip = winMusic;
         }
     }
 
@@ -836,7 +838,7 @@ public class Copia_Script : MonoBehaviour
         testCommentsCanvas.SetActive(false);
         loseCanvas.SetActive(true);
 
-        backgroundMusic.mute = !backgroundMusic.mute;
+        Music.clip = loseMusic;
 
         if (typeOfDeath == 0)
         {
