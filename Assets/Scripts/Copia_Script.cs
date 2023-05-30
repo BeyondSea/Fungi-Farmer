@@ -285,7 +285,10 @@ public class Copia_Script : MonoBehaviour
                 playerRecipe[ingredientIndex]++;
                 cupFilledTotal++;
 
-                buySound.Play();
+                if (ingredientIndex != 0)
+                {
+                    buySound.Play();
+                }
 
                 playerRecipeText[ingredientIndex].text = playerRecipe[ingredientIndex].ToString();
                 cupFilledText.text = "Total: " + cupFilledTotal.ToString() + "/" + cupCapacity;

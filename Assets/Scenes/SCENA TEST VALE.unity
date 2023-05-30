@@ -3017,9 +3017,9 @@ MonoBehaviour:
   youLoseText: {fileID: 1850335356}
   typeOfDeath: 0
   gameOverText: {fileID: 150073792}
-  youWinDialogue: "With these 30 coins\u2026 With these 30 coins I can buy a new
+  youWinDialogue: "With these 50 coins\u2026 With these 50 coins I can buy a new
     identity and be free, free of this, free of my parents!"
-  youWinText: {fileID: 1691985412}
+  youWinText: {fileID: 1947489021}
   dyingProtagImage: {fileID: 778891737}
   dyingProtagSprites:
   - {fileID: 21300000, guid: 4b21283daad900d4dbf0d242cfa64375, type: 3}
